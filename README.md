@@ -1,6 +1,6 @@
-# prs-agent
+# Polyscope Genomics
 
-An LLM agent that reads one person's genotype file and chooses a polygenic scoring model
+An LLM agent (called prs-agent in the code) that reads one person's genotype file and chooses a polygenic scoring model
 **for that person**, or refuses and says why. The agent is Claude Code, run inside a
 sandbox by a harness that stages each run, checks the boundary before the agent starts,
 and records what happened.
@@ -12,6 +12,33 @@ European-ancestry cohorts and lose accuracy on genomes from other ancestries, so
 person for whom a genetic answer would matter most is often the person for whom the
 available answer is least valid. This agent picks per person, and declines when nothing
 is defensible. **A refusal is a correct answer.**
+
+## How it works
+
+A run goes through six steps in order. Each is a skill in `agent/.claude/skills/`, written in
+prose, not code. The tools only read and extract; the agent makes every call.
+
+1. **The door** (`read-and-reason`): works out what the file is from its contents (a chip, a
+   whole genome or an exome, which vendor, which genome build) and what a missing position
+   means. It never reads the build off a filename.
+2. **Ancestry** (`ancestry`): places the genome among reference populations. If the person's
+   self-reported ancestry disagrees, they are told, but the math uses the genome.
+3. **Select** (`select`): finds candidate models for the trait in the PGS Catalog and ranks
+   them on ancestry match and validation quality. Coverage can rule a model out; it never
+   moves one up.
+4. **Score** (`score`): matches the model to the file, imputes missing positions when needed,
+   and sums the weights. Coverage is measured by weight, not by counting variants: it refuses
+   if under 90% of the model's weight is resolved, or if one unresolved position carries 5%
+   or more of it. If the measured coverage is materially worse than select estimated, it goes
+   back for the next model, and refuses when none is left. The first acceptable model wins;
+   it never scores them all and compares.
+5. **Interpret** (`interpret`): places the score against a reference group genetically close
+   to the person, built for that request. If no close group exists, it refuses rather than
+   make one up.
+6. **Report** (`report`): what the person is told: the score and where they stand, the limits
+   that apply to them, or why there is no score.
+
+`agent/AGENT.md` has the flow and `agent/JUDGMENT-CORE.md` the rules every step follows.
 
 ## Look at the interface
 
@@ -53,6 +80,9 @@ and sign in with the day's password:
 ```sh
 (cd "$HOME/prs-demo/app" && python3 -m demo_site.auth password --secret-file ../state/auth/master.key)
 ```
+
+To use one fixed password instead of a daily one, write it to
+`$HOME/prs-demo/state/auth/fixed-password`; `DEMO-README.md` explains it.
 
 `SETUP.md` covers the machine in depth, including the order of the Claude sign-in and the
 CLI pin and the reference files that cannot come out bit-identical. `DEMO-README.md`
