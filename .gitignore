@@ -1,0 +1,115 @@
+# --- answers. deliberately absent -----------------------------------------
+# A benchmark whose answers are public cannot test anything afterwards,
+# including a later version of this agent. Personas, case index and graders
+# are all here; only the answers are held back.
+answer-side/
+
+# --- other people's genomes ------------------------------------------------
+pgp-candidates/
+
+# --- too large for git, fetched by fetch_refdata.py ------------------------
+# The contents are ignored, not the directory, so that the manifest can be
+# tracked: git cannot re-include a file whose parent directory is excluded.
+agent/refdata/*
+!agent/refdata/MANIFEST.json
+# archives fetch_refdata.py downloads and build_refdata.py unpacks
+agent/refdata-downloads/
+reference-provider/inputs/
+reference-provider/*.log
+reference-provider/plink2
+agent/runs/
+agent/oracle/
+agent/results/
+agent/work/
+agent/sample/
+agent/test/
+agent/nextflow/
+agent/eval-check-*/
+agent/*.log
+
+# --- run output ------------------------------------------------------------
+harness/sandboxes/
+harness/vault/
+harness/live-runs/
+
+# --- junk ------------------------------------------------------------------
+__pycache__/
+.test-tmp/
+.pytest_cache/
+demo_site/test-output.txt
+*.pyc
+._*
+.DS_Store
+*.bak
+*.bak2
+*.part
+
+# --- operational, not part of the benchmark --------------------------------
+# The batch scripts carry the case-to-participant-to-file mapping for all 99
+# cases. That is answer-adjacent: it tells a reader which genome each persona
+# was built on. Kept out.
+harness/*_batch.sh
+harness/overnight*.sh
+harness/run_batch*.sh
+harness/eval12b_*.sh
+
+# --- internal design notes, NOT shippable ----------------------------------
+# prd.md names a participant with his trait, his projected ancestry, the
+# candidate models and which one is expected to fail the coverage floor. That
+# is the answer key written out in prose. The others are the same shape.
+# None of it is needed to run anything.
+agent/docs/
+agent/OPEN_QUESTIONS.md
+agent/BUILD_LOG.md
+
+# --- computed reference distributions, NOT shippable -----------------------
+# A built reference_distribution.json carries the trait, the model and the
+# cohort scores of the request it answered. The build scripts stay; their
+# output does not.
+reference-provider/reference_distribution*.json
+
+# --- internal working notes ------------------------------------------------
+# The defect notes walk through real runs with real coverage numbers against
+# named models. Useful to us, answer-adjacent to a reader.
+harness/docs/
+
+# --- answer-side and one-off analysis tooling ------------------------------
+# cg_truth_* read a participant's Complete Genomics all-sites file, which is the
+# ground truth the agent is graded against. They are not staged into any sandbox
+# and never have been, but they do not belong in a public repository either.
+agent/tools/cg_truth_*.py
+
+# one-off analyses and a build-time tool; none is a tool the agent uses
+agent/tools/rerun_coverage_leaveout.sh
+agent/tools/apply_leaveout_dr2.py
+agent/tools/leaveout_dr2.sh
+agent/tools/loo_validate_ancestry.py
+agent/tools/panel_index.py
+agent/tools/coverage_breakdown.py
+agent/tools/palindromic_fraction.py
+
+# run results, ~350KB a case. not committed for now.
+results/
+
+# personas: benchmark data, kept private
+agent/sim/personas/eval/
+
+# corpus tooling: kept private with the benchmark data
+vm/
+
+# answer-side design docs: kept private with the benchmark data
+agent/docs/prd.md
+agent/docs/spec.md
+agent/docs/idea.md
+agent/docs/skill-spec-coverage.md
+
+# --- never committed, whatever the directory -------------------------------
+# The demo personas are kept private, like the eval set.
+agent/sim/personas/
+# the answer key, the launch-gate tokens and credentials
+answer-sets.csv
+tokens.json
+.env
+.env.*
+# anything named for a Personal Genome Project participant
+*hu[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]*

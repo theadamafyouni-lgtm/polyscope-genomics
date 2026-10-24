@@ -1,0 +1,10 @@
+sandboxes/
+vault/
+live-runs/
+__pycache__/
+*.pyc
+
+# answer side: these name the patient, the model, the ancestry call or the coverage figure.
+docs/DECISION-leaveout-dr2.md
+docs/DECISIONS-AND-FLAGS.md
+docs/RUN-live-p01b-FINDINGS.md

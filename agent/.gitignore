@@ -1,0 +1,25 @@
+runs/
+*.vcf.gz
+refdata/*
+!refdata/MANIFEST.json
+refdata-downloads/
+__pycache__/
+*.pyc
+oracle/
+eval-check-*/
+results/
+work/
+bin/
+sample/
+# sim/ -- the 99 personas ARE the benchmark, and benchmark data is kept private
+test/
+nextflow
+.nextflow/
+.nextflow.log*
+*.log
+docs/research-*.md
+docs/research-index.md
+
+# answer side: the cg_truth_* tools are the Complete Genomics truth arm, and
+# cg_truth_extract.py hardcodes the patient sample id. (docs/ is ignored at the root.)
+tools/cg_truth_*.py

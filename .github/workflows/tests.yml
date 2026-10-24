@@ -1,0 +1,54 @@
+# The test suite on a fresh Ubuntu 24.04, set up the way setup.sh sets up a machine.
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
+        with:
+          node-version: 22
+
+      - name: System packages, as setup.sh installs them
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq bubblewrap bcftools tabix python3-numpy python3-pytest default-jre-headless
+
+      - name: The sandbox shim, as setup.sh installs it
+        run: |
+          sudo install -m 755 harness/sandbox-exec /usr/bin/sandbox-exec
+          # bubblewrap needs a user namespace, and the tests run without root; Ubuntu 24.04
+          # refuses those to accounts without root unless this is turned off.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+      - name: Frontend packages
+        run: npm ci --prefix frontend --ignore-scripts --no-audit --no-fund
+
+      - name: A stand-in launch-gate token file
+        # The harness refuses to import without one. These strings are made up.
+        run: |
+          echo '{"hard": ["STAND_IN"], "provider_hard": ["STAND_IN_PROVIDER"], "deny_eval_run": "stand-in-run", "prior_run": "stand-in-prior-run"}' > "$RUNNER_TEMP/tokens.json"
+          echo "PRS_HARNESS_TOKENS=$RUNNER_TEMP/tokens.json" >> "$GITHUB_ENV"
+
+      - name: Python tests
+        run: /usr/bin/python3 -m pytest -q -p no:cacheprovider -rs tests demo_site/test_worker_progress.py
+
+      - name: Frontend tests
+        run: node --test frontend/*.test.js

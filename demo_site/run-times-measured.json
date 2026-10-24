@@ -1,0 +1,27 @@
+{
+  "what": "Demo runs timed after the demo speedups, the way the worker times a run (demo_site/worker.py, RUN_TIMES): from its upload to its end, less the time it waited for its person's answers, by the kind of file it read (chip or whole_genome). The page's estimate for each kind counts these beside the runs the demo times itself, until five of that kind are timed there. No whole genome is here: the one timed on 10-15 (113.6 minutes) imputed the whole genome, so whole genomes are timed afresh by the demo itself.",
+  "runs": [
+    {
+      "date": "2026-10-15",
+      "run": "demo-3af5eae5c16147dd8226e9939126393e, the first timing run after the speedups",
+      "input": "sample A's genome (a genotype table, 15.7 MB), uploaded through the public link",
+      "answers": "a scripted person (sample A's answers)",
+      "speedups": "1 (ranged download) and 2 (a third chromosome at once); 3 did not start (no bcftools on the harness's PATH, fixed since)",
+      "wall_seconds": 3672,
+      "waiting_for_person_seconds": 14,
+      "working_seconds": 3658,
+      "kind": "chip"
+    },
+    {
+      "date": "2026-10-15",
+      "run": "demo-8d3c03269dac4afd8668197f4144482e, the second timing run after the speedups",
+      "kind": "chip",
+      "input": "sample A's genome (a genotype table, 15.7 MB), uploaded through the public link",
+      "answers": "a scripted person (sample A's answers)",
+      "speedups": "1, 2 and 3",
+      "wall_seconds": 2710,
+      "waiting_for_person_seconds": 20,
+      "working_seconds": 2690
+    }
+  ]
+}

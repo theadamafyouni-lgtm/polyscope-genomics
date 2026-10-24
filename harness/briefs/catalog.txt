@@ -1,0 +1,17 @@
+The person's file is at `{patient}`.
+
+There is no interactive terminal. Nobody is watching this session. The person is
+reachable only through:
+
+    python3 comms/harness_client.py ask-person --stage <label> \
+        --question "..." --why "..." [--hard-blocker] [--option A --option B]
+
+It blocks until they reply and prints what they said. Ask one question at a time and
+wait for the answer before asking the next -- a second question sent before the first
+is answered replaces it, and the first will never be answered. `--stage` is a required
+argument of the transport and is a free-text label on the message; it is not asked to
+be anything in particular.
+
+Talk to them, find out what they want to know about, and choose a polygenic scoring
+model for them from the PGS Catalog at https://www.pgscatalog.org. Tell them which one
+you chose.

@@ -1,0 +1,10 @@
+#!/bin/sh
+# Cron entry point for the demo on an account without root or systemd (demo_site/watchdog.py).
+# It lives at <base>/bin/demo-watchdog and runs the code in <base>/app. The crontab line, with
+# nothing secret in it:
+#   */3 * * * * $HOME/prs-agent/demo/bin/demo-watchdog >> $HOME/prs-agent/demo/state/watchdog.log 2>&1
+set -eu
+BASE=$(cd "$(dirname "$0")/.." && pwd)
+cd "$BASE/app"
+exec env -i HOME="$HOME" PATH=/usr/bin:/bin LANG=C.UTF-8 PYTHONDONTWRITEBYTECODE=1 \
+  /usr/bin/python3 -m demo_site.watchdog --base "$BASE"

@@ -1,0 +1,2163 @@
+{
+  "note": "Recipe for rebuilding agent/refdata: what fetch_refdata.py downloads. Paths are relative to agent/. refdata-downloads/ holds archives that build_refdata.py unpacks and checks member by member; it sits outside agent/refdata so that run clones never see it. agent/refdata/MANIFEST.json is a different file: the original 32-record manifest, kept byte-identical because every run clone contains it.",
+  "written_utc": "2026-09-24T04:32:25Z",
+  "derived_from": {
+    "path": "agent/refdata/MANIFEST.json",
+    "sha256": "268928a692386e10f2055bd0dcddd9b2d26fbdfc8b1d09cf5ba8fd28b4309cbe",
+    "assembled_utc": "2026-07-23T04:14:18Z",
+    "note": "Run-time capture of external artifacts (DATA-6, R6). Not version pinning: these identifiers record what was used, they do not freeze it."
+  },
+  "changes": "Added hgdp_1kgp_tarball, phase3_chr1..22 (+_tbi), chain_*, bref3. plink2 now records the Linux binary the published runs used (previous_record keeps the macOS one). jre url pinned to its version, with its 259 members. maps gains its 27 members. ancestry_vcf url moved to the S3 mirror that was hash-checked. Archives moved from refdata/tmp/ to refdata-downloads/. For every non-archive record the sha256 equals the working box's file; for archives the sha256 is from a full download on 2026-09-23 and each member equals the working box's file. Every url was hash-checked in full on 2026-09-23 except previous_url values. Evidence: SETUP.md section 8.",
+  "artifacts": [
+    {
+      "key": "ancestry_panel",
+      "path": "refdata/ancestry-ref/integrated_call_samples_v3.20130502.ALL.panel",
+      "url": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel",
+      "sha256": "b4023dc6ee2d62ee89c8d4d347db4d348e65518d66d346574cdae7a4bbd76858",
+      "bytes": 55156,
+      "retrieved_utc": "2026-07-22T22:58:29Z"
+    },
+    {
+      "key": "ancestry_vcf",
+      "path": "refdata/ancestry-ref/1kg.omni_broad_sanger_combined.b37.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/supporting/hd_genotype_chip/ALL.chip.omni_broad_sanger_combined.20140818.snps.genotypes.vcf.gz",
+      "sha256": "24060fab7520163138abac339e183aacdb3a530d9d16aecd2f017533c1026e5b",
+      "bytes": 1331157654,
+      "retrieved_utc": "2026-07-23T00:25:54Z",
+      "previous_url": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.chip.omni_broad_sanger_combined.20140818.snps.genotypes.vcf.gz",
+      "note": "url is the 1000 Genomes S3 mirror, hash-checked in full on 2026-09-23. previous_url (EBI) serves the same size but was not hash-checked (0.31 MB/s from the working box)."
+    },
+    {
+      "key": "beagle",
+      "path": "refdata/bin/beagle.jar",
+      "url": "https://faculty.washington.edu/browning/beagle/beagle.27Feb25.75f.jar",
+      "sha256": "7319f4af9638be05c18dcc1bfb8fb41a58a09293507ebf0d54617d0e40df5a70",
+      "bytes": 316844,
+      "retrieved_utc": "2026-07-22T22:29:01Z"
+    },
+    {
+      "key": "bref3",
+      "path": "refdata/bin/bref3.jar",
+      "url": "https://faculty.washington.edu/browning/beagle/bref3.27Feb25.75f.jar",
+      "sha256": "6166426f63b2c1cfed9e2cda2f9ba59ef3b3c19fdfc988a9ec6036358457e3f2",
+      "bytes": 112536,
+      "retrieved_utc": "2026-08-04T20:33:19Z"
+    },
+    {
+      "key": "chain_hg18ToHg19",
+      "path": "refdata/chains/hg18ToHg19.over.chain.gz",
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg18/liftOver/hg18ToHg19.over.chain.gz",
+      "sha256": "f1e57673d8f306ea4ed1553ea5fc2001b3cc3d149eef501fc97305b3b3e2a9d6",
+      "bytes": 140346,
+      "retrieved_utc": "2026-08-12T15:24:15Z"
+    },
+    {
+      "key": "chain_hg18ToHg38",
+      "path": "refdata/chains/hg18ToHg38.over.chain.gz",
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg18/liftOver/hg18ToHg38.over.chain.gz",
+      "sha256": "5dce497acbdaee42ba03e00726bec895e69c5f22a15b7f2522e87d04d852f9aa",
+      "bytes": 343575,
+      "retrieved_utc": "2026-08-12T15:24:15Z"
+    },
+    {
+      "key": "chain_md5sum",
+      "path": "refdata/chains/md5sum.txt",
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg18/liftOver/md5sum.txt",
+      "sha256": "fe229023d4c148b15bf1a821b6683f4faa7599f94c3d411e63c0088c4fc23355",
+      "bytes": 4415,
+      "retrieved_utc": "2026-08-12T15:24:16Z"
+    },
+    {
+      "key": "fasta",
+      "path": "refdata-downloads/GRCh37.fa.gz",
+      "url": "https://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz",
+      "sha256": "0a43b56dec40debae976d6e70cac68ea6ed874f9fb7c8c814363702ff1d47865",
+      "bytes": 869923173,
+      "retrieved_utc": "2026-07-22T22:57:15Z",
+      "previous_path": "refdata/tmp/GRCh37.fa.gz",
+      "yields": {
+        "GRCh37.fa.gz": {
+          "dest": "refdata/fasta/GRCh37.fa.gz",
+          "sha256": "8c973050909f4bd97b32ba7f65aec06ad947579cbf377a36f492b7ec07f1fa33",
+          "bytes": 787369186
+        },
+        "GRCh37.fa.gz.fai": {
+          "dest": "refdata/fasta/GRCh37.fa.gz.fai",
+          "sha256": "04cb9e93515ab0bd77ddcc1a6e931d6ade9c7b2b39823289ab9a5629e18935d8",
+          "bytes": 2743
+        },
+        "GRCh37.fa.gz.gzi": {
+          "dest": "refdata/fasta/GRCh37.fa.gz.gzi",
+          "sha256": "967965235f627d967a9e3ba3e456c8f7a606f1a92a9d3db4f6c6f5b7642145c7",
+          "bytes": 773032
+        }
+      },
+      "note": "build_refdata.py writes yields from this: gunzip | bgzip -@ 4, then htslib's own .fai/.gzi. The uncompressed sequence's sha256 is 3a3872e7bdd1532fdbfbc3afd70c04ff8a12a109319ae050c91d962f32e16a4f."
+    },
+    {
+      "key": "hgdp_1kgp_tarball",
+      "path": "refdata-downloads/pgsc_HGDP+1kGP_v1.tar.zst",
+      "url": "http://ftp.ebi.ac.uk/pub/databases/spot/pgs/resources/pgsc_HGDP+1kGP_v1.tar.zst",
+      "sha256": "da281e4d1060f4817479209eaeac4edcdf96e97fa2594199fd3b0551ecda49e1",
+      "bytes": 15953388718,
+      "retrieved_utc": null,
+      "verified_utc": "2026-09-23T17:02:54Z",
+      "md5": "2bd3586e9a09700f9bcbe62ba4dcee49",
+      "md5_published_at": "http://ftp.ebi.ac.uk/pub/databases/spot/pgs/resources/md5s.txt",
+      "members": {
+        "GRCh37_HGDP+1kGP_ALL.pgen": {
+          "dest": "refdata/ancestry-ref/hgdp_1kgp/GRCh37_HGDP+1kGP_ALL.pgen",
+          "sha256": "be35cf4a4f51db55aaa3db915bf053a75b5b66eeab2d788e1846e5ae154d4016",
+          "bytes": 13077622531
+        },
+        "GRCh37_HGDP+1kGP_ALL.pvar.zst": {
+          "dest": "refdata/ancestry-ref/hgdp_1kgp/GRCh37_HGDP+1kGP_ALL.pvar.zst",
+          "sha256": "4344967d0ff6f2627c4647ae58d681fab2c16141525e42d838dcc85a0a6642eb",
+          "bytes": 1921500716
+        },
+        "GRCh37_HGDP+1kGP_ALL.psam": {
+          "dest": "refdata/ancestry-ref/hgdp_1kgp/GRCh37_HGDP+1kGP_ALL.psam",
+          "sha256": "c8bc08292123545a6d7724a0090a4dbe2b7fe3367835dc3d6f234c6eeaf7de3f",
+          "bytes": 120281
+        },
+        "GRCh37_HGDP+1kGP.king.cutoff.out.id": {
+          "dest": "refdata/ancestry-ref/hgdp_1kgp/GRCh37_HGDP+1kGP.king.cutoff.out.id",
+          "sha256": "e336f60612fc46e35a7b1acfbf103917452ec75ee155e69e367bf569dd6872cc",
+          "bytes": 4905
+        }
+      },
+      "note": "PGS Catalog pgsc_calc HGDP+1kGP reference, published 2023-10-05. The tarball never existed on the working box, so retrieved_utc is unknown; its sha256 is from a full download at verified_utc, and its md5 equals the distributor's md5s.txt. Each listed member equals the working box's ancestry-ref/hgdp_1kgp/ file by sha256. About 16 GB over one connection: 6-8 h from the working box, 37 min with 16 ranged connections."
+    },
+    {
+      "key": "jre",
+      "path": "refdata-downloads/jre.tar.gz",
+      "url": "https://api.adoptium.net/v3/binary/version/jdk-21.0.11%2B10/mac/aarch64/jre/hotspot/normal/eclipse",
+      "sha256": "4b7a8cd23102c251c8b8be42a9a5f1263fb337cf1037f6f64b25f3070efe4b76",
+      "bytes": 48149317,
+      "retrieved_utc": "2026-07-22T22:28:58Z",
+      "previous_path": "refdata/tmp/jre.tar.gz",
+      "previous_url": "https://api.adoptium.net/v3/binary/latest/21/ga/mac/aarch64/jre/hotspot/normal/eclipse",
+      "members": {
+        "jdk-21.0.11+10-jre/Contents/Home/NOTICE": {
+          "dest": "refdata/jre/NOTICE",
+          "sha256": "c02756bcd9fa8191bf0fda4451bc018414dd44ee35bf09922c24377a475e4b5a",
+          "bytes": 2400
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/bin/java": {
+          "dest": "refdata/jre/bin/java",
+          "sha256": "afb8ed976e06d85c89192312923301959535169abe087d70166cd00fb96de2e5",
+          "bytes": 70432
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/bin/jfr": {
+          "dest": "refdata/jre/bin/jfr",
+          "sha256": "f246791349e0af5b08dfe7326d88447150287b686a0b87a5f461ce91e8662030",
+          "bytes": 70448
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/bin/jrunscript": {
+          "dest": "refdata/jre/bin/jrunscript",
+          "sha256": "bfabeaa76ad64474cec0f9834c20282ca18d9472b51b0358d37fcd23931e9268",
+          "bytes": 70464
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/bin/jwebserver": {
+          "dest": "refdata/jre/bin/jwebserver",
+          "sha256": "0c6d8feb3fc67b39147b6ec5e2fa3cd8818ccd828b47f72baf6cb70f7568a8c8",
+          "bytes": 70464
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/bin/keytool": {
+          "dest": "refdata/jre/bin/keytool",
+          "sha256": "6746337e793b5822285a26ba9786e3fba7fc7d1994ad8c0619d10aef9c57593a",
+          "bytes": 70464
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/bin/rmiregistry": {
+          "dest": "refdata/jre/bin/rmiregistry",
+          "sha256": "f441e9d345943da30eab1d008a4c65c69ba0f3b0156a2d7a08e538a8d98098e5",
+          "bytes": 70464
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/jaxp.properties": {
+          "dest": "refdata/jre/conf/jaxp.properties",
+          "sha256": "7d95c49465d0c836d608d02856d3b097934dfb5dc4bd2279affaf337d045b708",
+          "bytes": 7302
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/logging.properties": {
+          "dest": "refdata/jre/conf/logging.properties",
+          "sha256": "b62d2733ab99556b108a1951d894c5a8d76b1ac7a00c02c388f9eb9be046c56f",
+          "bytes": 2732
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/management/jmxremote.access": {
+          "dest": "refdata/jre/conf/management/jmxremote.access",
+          "sha256": "0c25d26ee212ca1e8c33f67c3c460d43fe849c3a1d23dbe341148517602b280c",
+          "bytes": 3997
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/management/jmxremote.password.template": {
+          "dest": "refdata/jre/conf/management/jmxremote.password.template",
+          "sha256": "0273b6a6b9e20e6ce54c5aee70164028e0395063b2b7d39060a40b6495543dbf",
+          "bytes": 5690
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/management/management.properties": {
+          "dest": "refdata/jre/conf/management/management.properties",
+          "sha256": "07dffdd85b01c19bf46ca320a699aba48dd6b01043eb0bd6a9528c7993312bad",
+          "bytes": 14988
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/net.properties": {
+          "dest": "refdata/jre/conf/net.properties",
+          "sha256": "2e070ed1d97052f0ce8771ed2ef74a38d7c260a45fde7a3682c8844e5fdf58a4",
+          "bytes": 7441
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/java.policy": {
+          "dest": "refdata/jre/conf/security/java.policy",
+          "sha256": "d51bcab7ed301caeff3779a5e777e6019864cecee5e2abc102ef991b0de77af2",
+          "bytes": 2294
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/java.security": {
+          "dest": "refdata/jre/conf/security/java.security",
+          "sha256": "7b8e5863046539f79a3ff3acbede2eb6b37043a461da524259f015f1dd7c0d92",
+          "bytes": 70512
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/policy/README.txt": {
+          "dest": "refdata/jre/conf/security/policy/README.txt",
+          "sha256": "6da0747334b0fea7592fd92614b2bbc8b126535e129b1fee483774d914e98eb5",
+          "bytes": 2390
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/policy/limited/default_US_export.policy": {
+          "dest": "refdata/jre/conf/security/policy/limited/default_US_export.policy",
+          "sha256": "758b930a526fc670ab7537f8c26321527050a31f5f42149a2dda623c56a0a1a9",
+          "bytes": 146
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/policy/limited/default_local.policy": {
+          "dest": "refdata/jre/conf/security/policy/limited/default_local.policy",
+          "sha256": "2b2627548e61316150d47ffc3e6cad465ca05b3cccd4785eb7d21aa7baa0f441",
+          "bytes": 647
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/policy/limited/exempt_local.policy": {
+          "dest": "refdata/jre/conf/security/policy/limited/exempt_local.policy",
+          "sha256": "8c3d7648abcd95a272ce12db870082937f4d7f6878d730d83cb7fbb31eb8b2c9",
+          "bytes": 566
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/policy/unlimited/default_US_export.policy": {
+          "dest": "refdata/jre/conf/security/policy/unlimited/default_US_export.policy",
+          "sha256": "758b930a526fc670ab7537f8c26321527050a31f5f42149a2dda623c56a0a1a9",
+          "bytes": 146
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/security/policy/unlimited/default_local.policy": {
+          "dest": "refdata/jre/conf/security/policy/unlimited/default_local.policy",
+          "sha256": "8d8a318e6d90dfd7e26612d2b6385aa704f686ca6134c551f8928418d92b851a",
+          "bytes": 193
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/conf/sound.properties": {
+          "dest": "refdata/jre/conf/sound.properties",
+          "sha256": "299c2360b6155eb28990ec49cd21753f97e43442fe8fab03e04f3e213df43a66",
+          "bytes": 1210
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.base/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.base/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/LICENSE": {
+          "dest": "refdata/jre/legal/java.base/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/aes.md": {
+          "dest": "refdata/jre/legal/java.base/aes.md",
+          "sha256": "45c6d4da48325edfbff3dcf71c704e504c057904435ed23c6d57046d551eb69d",
+          "bytes": 1444
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/asm.md": {
+          "dest": "refdata/jre/legal/java.base/asm.md",
+          "sha256": "683be15695bd248272d60f5b7fbe5e126a935ea6bf231a624a9aa164733e1d1d",
+          "bytes": 1582
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/c-libutl.md": {
+          "dest": "refdata/jre/legal/java.base/c-libutl.md",
+          "sha256": "bef40679922d6fdfb7e4ddb223ad6722300f6054ba737bbf6188d60fcec517f9",
+          "bytes": 1556
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/cldr.md": {
+          "dest": "refdata/jre/legal/java.base/cldr.md",
+          "sha256": "19515e14a240e022640e95b61b5095127fa9690755950b4a2b0a02e783e08163",
+          "bytes": 9601
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/icu.md": {
+          "dest": "refdata/jre/legal/java.base/icu.md",
+          "sha256": "1bf28459c6e0af9f3429f4f8becd1668d6544055f8df240277456bc4b3d8a752",
+          "bytes": 30197
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/public_suffix.md": {
+          "dest": "refdata/jre/legal/java.base/public_suffix.md",
+          "sha256": "d7818e02ebfc4e5cd82613e003e7ba6be2e9d5949ea4aa0ba88d4d2f7ca69999",
+          "bytes": 17783
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/siphash.md": {
+          "dest": "refdata/jre/legal/java.base/siphash.md",
+          "sha256": "5a792b5a74ad2a5f3d6a7ad8b7a841116e58a772c18bc6e392320a365b222c76",
+          "bytes": 8256
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/unicode.md": {
+          "dest": "refdata/jre/legal/java.base/unicode.md",
+          "sha256": "6f72f10d166b2c2e8a395e03e734c5afc852b59aeca73ced124f6b9c96268d53",
+          "bytes": 9078
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.base/zlib.md": {
+          "dest": "refdata/jre/legal/java.base/zlib.md",
+          "sha256": "c9c70c36a1f0325e8788771906202d42ba6ab4205caca44ec0f665707e83226b",
+          "bytes": 1010
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.compiler/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.compiler/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.compiler/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.compiler/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.compiler/LICENSE": {
+          "dest": "refdata/jre/legal/java.compiler/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.datatransfer/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.datatransfer/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.datatransfer/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.datatransfer/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.datatransfer/LICENSE": {
+          "dest": "refdata/jre/legal/java.datatransfer/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.desktop/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.desktop/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/LICENSE": {
+          "dest": "refdata/jre/legal/java.desktop/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/colorimaging.md": {
+          "dest": "refdata/jre/legal/java.desktop/colorimaging.md",
+          "sha256": "04d61e3e8e71dd452ebe52008af5378d9f6640d14578aeb515dc5375973b0189",
+          "bytes": 167
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/freetype.md": {
+          "dest": "refdata/jre/legal/java.desktop/freetype.md",
+          "sha256": "81b380959fad26d66928c0f4547c2fe25914e6f2bcab264971b3261c3fbee1c5",
+          "bytes": 30460
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/giflib.md": {
+          "dest": "refdata/jre/legal/java.desktop/giflib.md",
+          "sha256": "4fdfc68f8c5e461ee899cec851290cc713e17673a0466f46973178866ddc9ed0",
+          "bytes": 1689
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/harfbuzz.md": {
+          "dest": "refdata/jre/legal/java.desktop/harfbuzz.md",
+          "sha256": "9050c60ce9a0c2b212e746bf5b3eb8ccb064d2c41a77ac7b681b3a6eb22cc304",
+          "bytes": 3628
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/jpeg.md": {
+          "dest": "refdata/jre/legal/java.desktop/jpeg.md",
+          "sha256": "c1dfb9719a71ad9f861f8728550542d681e25c8ef40e6393606e6e2a0c1d653a",
+          "bytes": 3474
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/lcms.md": {
+          "dest": "refdata/jre/legal/java.desktop/lcms.md",
+          "sha256": "fc1d7f60c7cdc96b5cadafd4f3610c6a74f2d0afa08852036929c7a1474ebab6",
+          "bytes": 2641
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/libpng.md": {
+          "dest": "refdata/jre/legal/java.desktop/libpng.md",
+          "sha256": "46e55b9dc9cc25bfd3ff2bb6d48b9b9caa1b8f85e69473630ec5b41d22afc3c2",
+          "bytes": 7519
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/mesa3d.md": {
+          "dest": "refdata/jre/legal/java.desktop/mesa3d.md",
+          "sha256": "63f4e6f75caebbccb95d903fb43e46ac7111b3624d0a34f146b276d7d9e7b152",
+          "bytes": 5732
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/pipewire.md": {
+          "dest": "refdata/jre/legal/java.desktop/pipewire.md",
+          "sha256": "56a8fb1652c70ac204d13bb52ca4d678162e7d21a97d10209c2a633de8082de0",
+          "bytes": 1479
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.desktop/xwd.md": {
+          "dest": "refdata/jre/legal/java.desktop/xwd.md",
+          "sha256": "1d4ffa93c87f35084b02a7aa90a21084b4019db4fe1003c2e5ce775b4a384f59",
+          "bytes": 1348
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.instrument/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.instrument/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.instrument/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.instrument/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.instrument/LICENSE": {
+          "dest": "refdata/jre/legal/java.instrument/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.logging/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.logging/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.logging/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.logging/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.logging/LICENSE": {
+          "dest": "refdata/jre/legal/java.logging/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.management.rmi/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.management.rmi/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.management.rmi/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.management.rmi/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.management.rmi/LICENSE": {
+          "dest": "refdata/jre/legal/java.management.rmi/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.management/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.management/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.management/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.management/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.management/LICENSE": {
+          "dest": "refdata/jre/legal/java.management/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.naming/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.naming/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.naming/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.naming/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.naming/LICENSE": {
+          "dest": "refdata/jre/legal/java.naming/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.net.http/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.net.http/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.net.http/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.net.http/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.net.http/LICENSE": {
+          "dest": "refdata/jre/legal/java.net.http/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.prefs/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.prefs/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.prefs/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.prefs/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.prefs/LICENSE": {
+          "dest": "refdata/jre/legal/java.prefs/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.rmi/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.rmi/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.rmi/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.rmi/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.rmi/LICENSE": {
+          "dest": "refdata/jre/legal/java.rmi/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.scripting/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.scripting/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.scripting/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.scripting/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.scripting/LICENSE": {
+          "dest": "refdata/jre/legal/java.scripting/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.se/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.se/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.se/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.se/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.se/LICENSE": {
+          "dest": "refdata/jre/legal/java.se/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.security.jgss/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.security.jgss/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.security.jgss/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.security.jgss/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.security.jgss/LICENSE": {
+          "dest": "refdata/jre/legal/java.security.jgss/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.security.sasl/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.security.sasl/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.security.sasl/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.security.sasl/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.security.sasl/LICENSE": {
+          "dest": "refdata/jre/legal/java.security.sasl/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.smartcardio/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.smartcardio/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.smartcardio/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.smartcardio/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.smartcardio/LICENSE": {
+          "dest": "refdata/jre/legal/java.smartcardio/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.smartcardio/pcsclite.md": {
+          "dest": "refdata/jre/legal/java.smartcardio/pcsclite.md",
+          "sha256": "b39ce363c281ed36e937f9e6c03311d7dbf0b20d3614dde084130c2a10909692",
+          "bytes": 2155
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.sql.rowset/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.sql.rowset/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.sql.rowset/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.sql.rowset/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.sql.rowset/LICENSE": {
+          "dest": "refdata/jre/legal/java.sql.rowset/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.sql/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.sql/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.sql/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.sql/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.sql/LICENSE": {
+          "dest": "refdata/jre/legal/java.sql/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.transaction.xa/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.transaction.xa/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.transaction.xa/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.transaction.xa/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.transaction.xa/LICENSE": {
+          "dest": "refdata/jre/legal/java.transaction.xa/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml.crypto/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.xml.crypto/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml.crypto/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.xml.crypto/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml.crypto/LICENSE": {
+          "dest": "refdata/jre/legal/java.xml.crypto/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml.crypto/santuario.md": {
+          "dest": "refdata/jre/legal/java.xml.crypto/santuario.md",
+          "sha256": "d08690d25f660f145c73365d260ed522cd0aace8a0e1396706551b7a1ae8c9a3",
+          "bytes": 11505
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/java.xml/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/java.xml/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/LICENSE": {
+          "dest": "refdata/jre/legal/java.xml/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/bcel.md": {
+          "dest": "refdata/jre/legal/java.xml/bcel.md",
+          "sha256": "cd578186ad93de46cca29ec8ace2b11f9da751987f3f140e6095c528596cc8c1",
+          "bytes": 11196
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/dom.md": {
+          "dest": "refdata/jre/legal/java.xml/dom.md",
+          "sha256": "6686e8877667584a3a7c07344baadca1a03e29f677162d87c3c0811e990d1148",
+          "bytes": 3761
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/jcup.md": {
+          "dest": "refdata/jre/legal/java.xml/jcup.md",
+          "sha256": "8d5dcfdf50455a3c34c753a98f21e953248af200415a9084e3f102cb6c43b8bf",
+          "bytes": 1448
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/xalan.md": {
+          "dest": "refdata/jre/legal/java.xml/xalan.md",
+          "sha256": "c27eb875da4be683d4d7422be986e5e30f636ede31958ff1d39f9cd6109e7a00",
+          "bytes": 13477
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/java.xml/xerces.md": {
+          "dest": "refdata/jre/legal/java.xml/xerces.md",
+          "sha256": "4a6bf6b367193ee68681cb2d9fed30ffc5d62dd2d477bd62e0271707d71b3244",
+          "bytes": 11848
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.accessibility/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.accessibility/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.accessibility/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.accessibility/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.accessibility/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.accessibility/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.charsets/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.charsets/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.charsets/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.charsets/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.charsets/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.charsets/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.cryptoki/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.crypto.cryptoki/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.cryptoki/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.crypto.cryptoki/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.cryptoki/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.crypto.cryptoki/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.cryptoki/pkcs11cryptotoken.md": {
+          "dest": "refdata/jre/legal/jdk.crypto.cryptoki/pkcs11cryptotoken.md",
+          "sha256": "1f36ff1342a581142c858f90064e20633d43529ac82adb85345bd902a14e18b2",
+          "bytes": 4095
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.cryptoki/pkcs11wrapper.md": {
+          "dest": "refdata/jre/legal/jdk.crypto.cryptoki/pkcs11wrapper.md",
+          "sha256": "371974b1fca3744a3892c7ee1fcc593b8b4281fc218f4cafd2f709e9df5fd81d",
+          "bytes": 2131
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.ec/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.crypto.ec/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.crypto.ec/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.crypto.ec/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.dynalink/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.dynalink/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.dynalink/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.dynalink/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.dynalink/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.dynalink/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.dynalink/dynalink.md": {
+          "dest": "refdata/jre/legal/jdk.dynalink/dynalink.md",
+          "sha256": "17312591cabee3ef6c34ed8897d92e4e361ba9cea41ec00dcd61a322a8fc2cdb",
+          "bytes": 1502
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.httpserver/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.httpserver/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.httpserver/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.httpserver/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.httpserver/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.httpserver/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.incubator.vector/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.incubator.vector/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.incubator.vector/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.incubator.vector/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.incubator.vector/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.incubator.vector/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.ci/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.ci/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.ci/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.ci/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.ci/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.ci/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.compiler.management/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.compiler.management/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.compiler.management/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.compiler.management/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.compiler.management/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.compiler.management/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.compiler/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.compiler/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.compiler/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.compiler/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.internal.vm.compiler/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.internal.vm.compiler/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jdwp.agent/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.jdwp.agent/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jdwp.agent/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.jdwp.agent/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jdwp.agent/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.jdwp.agent/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jfr/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.jfr/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jfr/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.jfr/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jfr/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.jfr/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jsobject/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.jsobject/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jsobject/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.jsobject/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.jsobject/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.jsobject/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.localedata/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.localedata/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.localedata/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.localedata/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.localedata/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.localedata/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.localedata/cldr.md": {
+          "dest": "refdata/jre/legal/jdk.localedata/cldr.md",
+          "sha256": "19515e14a240e022640e95b61b5095127fa9690755950b4a2b0a02e783e08163",
+          "bytes": 9601
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.localedata/thaidict.md": {
+          "dest": "refdata/jre/legal/jdk.localedata/thaidict.md",
+          "sha256": "c326144a2351c9608fa708b5d7d3c5a3da03e82b66479b128e9db4969539824a",
+          "bytes": 1346
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management.agent/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.management.agent/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management.agent/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.management.agent/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management.agent/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.management.agent/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management.jfr/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.management.jfr/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management.jfr/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.management.jfr/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management.jfr/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.management.jfr/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.management/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.management/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.management/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.management/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.naming.dns/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.naming.dns/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.naming.rmi/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.naming.rmi/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.net/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.net/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.net/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.net/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.net/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.net/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.nio.mapmode/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.nio.mapmode/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.nio.mapmode/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.nio.mapmode/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.nio.mapmode/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.nio.mapmode/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.sctp/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.sctp/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.sctp/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.sctp/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.sctp/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.sctp/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.security.auth/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.security.auth/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.security.auth/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.security.auth/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.security.auth/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.security.auth/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.security.jgss/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.security.jgss/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.security.jgss/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.security.jgss/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.security.jgss/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.security.jgss/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.unsupported/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.unsupported/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.unsupported/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.unsupported/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.unsupported/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.unsupported/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.xml.dom/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.xml.dom/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.xml.dom/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.xml.dom/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.xml.dom/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.xml.dom/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.zipfs/ADDITIONAL_LICENSE_INFO": {
+          "dest": "refdata/jre/legal/jdk.zipfs/ADDITIONAL_LICENSE_INFO",
+          "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916",
+          "bytes": 2114
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.zipfs/ASSEMBLY_EXCEPTION": {
+          "dest": "refdata/jre/legal/jdk.zipfs/ASSEMBLY_EXCEPTION",
+          "sha256": "75292f03bf23d3db7c985aecc191029b93883200721ed23ed34a2e601463df33",
+          "bytes": 1514
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/legal/jdk.zipfs/LICENSE": {
+          "dest": "refdata/jre/legal/jdk.zipfs/LICENSE",
+          "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726",
+          "bytes": 19274
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/classlist": {
+          "dest": "refdata/jre/lib/classlist",
+          "sha256": "01b9c997aa616618b9cd713dda43b66fbcf5f25976cfe12240415d0641db801a",
+          "bytes": 77202
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/fontconfig.bfc": {
+          "dest": "refdata/jre/lib/fontconfig.bfc",
+          "sha256": "5409952a218126c5c11cf0e4963665711aeeab50f5648264d70866fca705a950",
+          "bytes": 2922
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/fontconfig.properties.src": {
+          "dest": "refdata/jre/lib/fontconfig.properties.src",
+          "sha256": "c8d20a4a39240665252306bdd3dbc8d71e1e246c8cd8c7985b32e4101658a148",
+          "bytes": 8931
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/jfr/default.jfc": {
+          "dest": "refdata/jre/lib/jfr/default.jfc",
+          "sha256": "4fed4b508c5f1b69578293df84f94a63752f86b4259d97e12884e3b2ec56ef50",
+          "bytes": 37449
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/jfr/profile.jfc": {
+          "dest": "refdata/jre/lib/jfr/profile.jfc",
+          "sha256": "485fb90dbecee9a950c45247464351162b1eb0c35387fbb929f002c600807251",
+          "bytes": 37401
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/jrt-fs.jar": {
+          "dest": "refdata/jre/lib/jrt-fs.jar",
+          "sha256": "e551d0cfe50d4467db1a5a11021863e1a6995fbc06ec78f6aab9cab9e3e525af",
+          "bytes": 110122
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/jspawnhelper": {
+          "dest": "refdata/jre/lib/jspawnhelper",
+          "sha256": "faafe2f51243aca975dde2d37c925b02b21b507f4c1f104d714a76deafb74103",
+          "bytes": 72096
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/jvm.cfg": {
+          "dest": "refdata/jre/lib/jvm.cfg",
+          "sha256": "aa9efb969444c1484e29adecab55a122458090616e766b2f1230ef05bc3867e0",
+          "bytes": 29
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libawt.dylib": {
+          "dest": "refdata/jre/lib/libawt.dylib",
+          "sha256": "2f44a4bc66bc785b22be81bb66434e2eca984db14e7b8d4270d4ab8ccd4b297e",
+          "bytes": 551744
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libawt_lwawt.dylib": {
+          "dest": "refdata/jre/lib/libawt_lwawt.dylib",
+          "sha256": "c3e8beb52e896474216ac8d224ce6a0cb7cbfb94db9b1eecccbe4c79f41b0467",
+          "bytes": 1236352
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libdt_socket.dylib": {
+          "dest": "refdata/jre/lib/libdt_socket.dylib",
+          "sha256": "be2700c98c98ada4a9762c29b942932796da5cb8521f96cd8285b17cbdbb0a6b",
+          "bytes": 73872
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libextnet.dylib": {
+          "dest": "refdata/jre/lib/libextnet.dylib",
+          "sha256": "342cea4de43cf53ebd7f9a5fb13c5ba0056f9484ad97fe2e06a0ed92dd1c66f0",
+          "bytes": 71024
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libfontmanager.dylib": {
+          "dest": "refdata/jre/lib/libfontmanager.dylib",
+          "sha256": "fc7b1af388332025d40fb07a3371688990e187553be3362cc506a9ff9fc244b0",
+          "bytes": 1425840
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libfreetype.dylib": {
+          "dest": "refdata/jre/lib/libfreetype.dylib",
+          "sha256": "fa76d85722055029551abc0e1a37027f7939ebebab8694d17a3468cb1337c60e",
+          "bytes": 646704
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libinstrument.dylib": {
+          "dest": "refdata/jre/lib/libinstrument.dylib",
+          "sha256": "b4a9e1ef015b68277f43cbee9cc8f2a1b7c1fca1e7f0bda1fcf1b8686b56352b",
+          "bytes": 92496
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libj2gss.dylib": {
+          "dest": "refdata/jre/lib/libj2gss.dylib",
+          "sha256": "a2d347b860ccf54aaff7f0809ce9326c24984f5632f943d6ea5f0e934fdbf9a9",
+          "bytes": 92944
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libj2pcsc.dylib": {
+          "dest": "refdata/jre/lib/libj2pcsc.dylib",
+          "sha256": "02ee10aec754fada0e4eb93229ce93d015d97f36eb434914d9cf9b0e717d12f0",
+          "bytes": 71616
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libj2pkcs11.dylib": {
+          "dest": "refdata/jre/lib/libj2pkcs11.dylib",
+          "sha256": "67274d31d72107e02166117f5ff0dbd90c69f0cae446f21323369ce0dc5d6499",
+          "bytes": 131312
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjaas.dylib": {
+          "dest": "refdata/jre/lib/libjaas.dylib",
+          "sha256": "c27283a14c36d5ae4fc10b1074de66af6691347844c4ed58ba4e26408821cd0d",
+          "bytes": 70016
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjava.dylib": {
+          "dest": "refdata/jre/lib/libjava.dylib",
+          "sha256": "c6bc9a09e77ebec0a05651a44d4de5d3b20d921be1de7c13365a7e292a4c0ed5",
+          "bytes": 188320
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjavajpeg.dylib": {
+          "dest": "refdata/jre/lib/libjavajpeg.dylib",
+          "sha256": "c94612210b5406559077e5e71c1b9708ea4d83f56115b21253d6994c9de34753",
+          "bytes": 265152
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjawt.dylib": {
+          "dest": "refdata/jre/lib/libjawt.dylib",
+          "sha256": "6200e914d344b3af63a024e8f3fbcc9b1fb36e015cf45b03bae1d6320efcfa75",
+          "bytes": 53424
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjdwp.dylib": {
+          "dest": "refdata/jre/lib/libjdwp.dylib",
+          "sha256": "c3d1883672c852197859070c8efd7e222f6c18289444ea0321cac0712843d115",
+          "bytes": 295696
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjimage.dylib": {
+          "dest": "refdata/jre/lib/libjimage.dylib",
+          "sha256": "2793e9bbb6ddf06ffda2467833cd59ad3a18c1c408abeb469fb8fec2667a9e08",
+          "bytes": 77616
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjli.dylib": {
+          "dest": "refdata/jre/lib/libjli.dylib",
+          "sha256": "d8f309520577e1e49aa8269e511a7fb75ba8e4ab3725d335f7f4109dd866e865",
+          "bytes": 148800
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjsig.dylib": {
+          "dest": "refdata/jre/lib/libjsig.dylib",
+          "sha256": "a24322d68f3c83608917afba8a6007a6a788e45c91969ca0b37cd497e8fe1e42",
+          "bytes": 70896
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libjsound.dylib": {
+          "dest": "refdata/jre/lib/libjsound.dylib",
+          "sha256": "c0984e46de23c926100eac00b33da061d79ab8c576c21402df7e24fa82a817d6",
+          "bytes": 136000
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/liblcms.dylib": {
+          "dest": "refdata/jre/lib/liblcms.dylib",
+          "sha256": "f8055e5d2e466858a183f137b3a81a22a7419f93182baa66f5012ff68f72e37e",
+          "bytes": 393584
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libmanagement.dylib": {
+          "dest": "refdata/jre/lib/libmanagement.dylib",
+          "sha256": "22a855670bc9987c2a776021934afa7d862f2e3623476a4c9e7aed290db89bc2",
+          "bytes": 76800
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libmanagement_agent.dylib": {
+          "dest": "refdata/jre/lib/libmanagement_agent.dylib",
+          "sha256": "086c1e18e45f1ab96104768be059267c9151e3ebbff3f32a9796cd3fcfc5b734",
+          "bytes": 69952
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libmanagement_ext.dylib": {
+          "dest": "refdata/jre/lib/libmanagement_ext.dylib",
+          "sha256": "79b20120622e1e09c27b0966181c6906ca0dca67ccd18f2c7a3c91010f49aa68",
+          "bytes": 75312
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libmlib_image.dylib": {
+          "dest": "refdata/jre/lib/libmlib_image.dylib",
+          "sha256": "676204e2ba73104ccd9d6eef47a4579bbf26bff4b77b42e04f8003596a62fa7c",
+          "bytes": 507888
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libnet.dylib": {
+          "dest": "refdata/jre/lib/libnet.dylib",
+          "sha256": "22f53c20b8ce5c52c906742f8f9c3968212ced6e115267ef7002185e150e7491",
+          "bytes": 114320
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libnio.dylib": {
+          "dest": "refdata/jre/lib/libnio.dylib",
+          "sha256": "4288e077395b4312f830859ada0a654338c5b615c896163307ef9a9cd1f2d206",
+          "bytes": 126960
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libosx.dylib": {
+          "dest": "refdata/jre/lib/libosx.dylib",
+          "sha256": "aeb4e1b600ad8b2a92e98dcea438f3bd656214143dbeb7ca74dcc8b54bbda266",
+          "bytes": 74720
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libosxapp.dylib": {
+          "dest": "refdata/jre/lib/libosxapp.dylib",
+          "sha256": "82c78c6dac33f9b33ccb5d76848fd4fef6970dd17934fef6c1c9dde9718389ff",
+          "bytes": 189568
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libosxkrb5.dylib": {
+          "dest": "refdata/jre/lib/libosxkrb5.dylib",
+          "sha256": "dcca1370b769fc1b627fbd5232a8871af1ae7cc6c95afb742f12e00107600dc0",
+          "bytes": 74496
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libosxsecurity.dylib": {
+          "dest": "refdata/jre/lib/libosxsecurity.dylib",
+          "sha256": "9ebba8e30f3f8ed99964b034a7e638165e1b859752b7c827419c1725a3e0a178",
+          "bytes": 75104
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libosxui.dylib": {
+          "dest": "refdata/jre/lib/libosxui.dylib",
+          "sha256": "9a0f7cc138ba2bf26d18c3a2d1cac2598d082a5b6ac1e56b233a7be0b2d8d12f",
+          "bytes": 99616
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libprefs.dylib": {
+          "dest": "refdata/jre/lib/libprefs.dylib",
+          "sha256": "0997d926de6d091ec6352d75e18027365b39dfbdc4fea6a3f61ec458a3cc579a",
+          "bytes": 74560
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/librmi.dylib": {
+          "dest": "refdata/jre/lib/librmi.dylib",
+          "sha256": "a6f5592ed7fe084c1b9cc9d8a1674e6d95f28ac79e5a8ef5cdcf3e574d05ee1e",
+          "bytes": 69648
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libsplashscreen.dylib": {
+          "dest": "refdata/jre/lib/libsplashscreen.dylib",
+          "sha256": "bec1953185c70d1676d0e29fa510f27f1a05179b7e33bc775fa2e8223fbf0f23",
+          "bytes": 409472
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libsyslookup.dylib": {
+          "dest": "refdata/jre/lib/libsyslookup.dylib",
+          "sha256": "ae47abe0127ad13adb1dd0182a316a0f3bd33fc7afaf5f5fdd8581e17d9bd1df",
+          "bytes": 36352
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libverify.dylib": {
+          "dest": "refdata/jre/lib/libverify.dylib",
+          "sha256": "2968272dc6a2c1b60add448215785ea7f0f1816d031519b9ed63f88d514b4ddb",
+          "bytes": 106832
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/libzip.dylib": {
+          "dest": "refdata/jre/lib/libzip.dylib",
+          "sha256": "3d536507aa065e1f22220bd49ca5a7d6ce0e0290813887cdd73537458e7226c5",
+          "bytes": 162832
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/modules": {
+          "dest": "refdata/jre/lib/modules",
+          "sha256": "cf08114e006897d1474c5f4bb828d8ccc9d2647bdb81bcff13f74c1ccaaa3ffb",
+          "bytes": 100614029
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/psfont.properties.ja": {
+          "dest": "refdata/jre/lib/psfont.properties.ja",
+          "sha256": "5a4bd51b969bf187ff86d94f4a71fdfbfa602762975fa3c73d264b4575f7c78f",
+          "bytes": 3793
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/psfontj2d.properties": {
+          "dest": "refdata/jre/lib/psfontj2d.properties",
+          "sha256": "780c565d5af3ee6f68b887b75c041cdf46a0592f67012f12eeb691283e92630a",
+          "bytes": 11390
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/security/blocked.certs": {
+          "dest": "refdata/jre/lib/security/blocked.certs",
+          "sha256": "96572f243f31c2ef81a6e627542e596f6a9295cff3c7ae095c1b595cb1457ded",
+          "bytes": 2488
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/security/cacerts": {
+          "dest": "refdata/jre/lib/security/cacerts",
+          "sha256": "c3ca801bfc5d9f9e50c69f55537e78dc83e4e50c1ddea30db81e4b672b5a8aee",
+          "bytes": 187607
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/security/default.policy": {
+          "dest": "refdata/jre/lib/security/default.policy",
+          "sha256": "2bd418aab30b091b136962f80be7ddf39dcba85f082a558a6993848ae65366ae",
+          "bytes": 10657
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/security/public_suffix_list.dat": {
+          "dest": "refdata/jre/lib/security/public_suffix_list.dat",
+          "sha256": "5a3a571cc2e016fee10c221036cf1d2b52ee8ba39288ef20abe2667828ca30b4",
+          "bytes": 228507
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/server/classes.jsa": {
+          "dest": "refdata/jre/lib/server/classes.jsa",
+          "sha256": "a56ff5a8242c1a71169ebc64f335637fa92bbb81236195da71d75d87d2a30735",
+          "bytes": 13500416
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/server/classes_nocoops.jsa": {
+          "dest": "refdata/jre/lib/server/classes_nocoops.jsa",
+          "sha256": "a216a24ebc5031c369ca78b3d8f26ccf1f888ae2867df619afb5e7d9f0dde8c0",
+          "bytes": 13828096
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/server/libjsig.dylib": {
+          "dest": "refdata/jre/lib/server/libjsig.dylib",
+          "sha256": "a24322d68f3c83608917afba8a6007a6a788e45c91969ca0b37cd497e8fe1e42",
+          "bytes": 70896
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/server/libjvm.dylib": {
+          "dest": "refdata/jre/lib/server/libjvm.dylib",
+          "sha256": "34bc0bc23d87abb85147409ccdbf604ccd3d2fe8b83ac567a966a5df8a81eded",
+          "bytes": 18203664
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/shaders.metallib": {
+          "dest": "refdata/jre/lib/shaders.metallib",
+          "sha256": "5bba5cc7c25aa23f90ae7b0bf72d4835bfdfd9760b279f7a8f018670a5f77deb",
+          "bytes": 156589
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/lib/tzdb.dat": {
+          "dest": "refdata/jre/lib/tzdb.dat",
+          "sha256": "36cf71e63ce2816fe4456e9195e6c27fa7c9cd431c89ba762eba394ec2c7a1e3",
+          "bytes": 102820
+        },
+        "jdk-21.0.11+10-jre/Contents/Home/release": {
+          "dest": "refdata/jre/release",
+          "sha256": "454aa843aad89c4254c84bd478116121ee220ee40fdf6001f4de3945414afcec",
+          "bytes": 1621
+        }
+      },
+      "note": "url pinned to the version the sha256 records (21.0.11+10); previous_url is a 'latest' alias that served 21.0.12.1 on 2026-09-23. The members are Contents/Home/*, which stage_refdata.sh copied to refdata/jre/; each equals the working box's file. It is the macOS aarch64 JRE the published runs had staged; it does not run on Linux, and no selection run starts Java."
+    },
+    {
+      "key": "maps",
+      "path": "refdata-downloads/maps.zip",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/plink.GRCh37.map.zip",
+      "sha256": "8e88141345844571bc63efac6c043ee29e8ca41f26087dc51b7f1918943a077b",
+      "bytes": 23913120,
+      "retrieved_utc": "2026-07-22T22:29:28Z",
+      "previous_path": "refdata/tmp/maps.zip",
+      "members": {
+        "README.txt": {
+          "dest": "refdata/maps/README.txt",
+          "sha256": "0019af164daafc467989eb5634d96bdcc4e8ac9a7e4c51228a5d4deda6af7ae9",
+          "bytes": 1017
+        },
+        "plink.README.txt": {
+          "dest": "refdata/maps/plink.README.txt",
+          "sha256": "c898c92438368a54588bb233bdbf2581af49fdeca521d5621177eee8c4838435",
+          "bytes": 245
+        },
+        "plink.chr1.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr1.GRCh37.map",
+          "sha256": "c61a49536b3af3830842cdc202e5ad7617709fc359b14ed49a3476b91cd5c380",
+          "bytes": 6228507
+        },
+        "plink.chr10.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr10.GRCh37.map",
+          "sha256": "317c0775c2e319589e8a7f6f80128a7d7c1c295e79686d04b2bc4e896e3bfe0a",
+          "bytes": 4436992
+        },
+        "plink.chr11.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr11.GRCh37.map",
+          "sha256": "a0427851fca51b27c253eafcffcb5c32932493a0e4991b4a94848ecea02914bd",
+          "bytes": 4135896
+        },
+        "plink.chr12.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr12.GRCh37.map",
+          "sha256": "c53fbb1d0bbab023c123993e7bb7f6bb443c4780662424bf6d6156d9ad212152",
+          "bytes": 4050892
+        },
+        "plink.chr13.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr13.GRCh37.map",
+          "sha256": "a7d533b97ea1dc99825f1a3577642dcecea9be1899cfa4ea0baa87ea5a5c8777",
+          "bytes": 3316091
+        },
+        "plink.chr14.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr14.GRCh37.map",
+          "sha256": "3fe38451fa747d27ebaeb97333d2945d4baf5a9a01529f59475404db7117279a",
+          "bytes": 2604482
+        },
+        "plink.chr15.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr15.GRCh37.map",
+          "sha256": "438e29dd23a81dfd89c58a6465a729df1c156b6bd637eed3e5dc94482e8d5d0b",
+          "bytes": 2261492
+        },
+        "plink.chr16.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr16.GRCh37.map",
+          "sha256": "881a28cb8f05f79e16c958e99479f2a8e26f9421bad82f349a8b9639ca296b0a",
+          "bytes": 2233248
+        },
+        "plink.chr17.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr17.GRCh37.map",
+          "sha256": "84e9bb7aff551a677fdb6a54cf6e204e3dfaa4ff10868a8b729dd663351bda98",
+          "bytes": 1788464
+        },
+        "plink.chr18.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr18.GRCh37.map",
+          "sha256": "fa0a9eaee3355e48871f0fc0d00c8b15960d2ff8700a00b414e84ad816ff8912",
+          "bytes": 2456669
+        },
+        "plink.chr19.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr19.GRCh37.map",
+          "sha256": "89f66084ee401c455505948b6cfa0b2b927bb454f8e0847f2ad6cb7ab91207af",
+          "bytes": 1121451
+        },
+        "plink.chr2.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr2.GRCh37.map",
+          "sha256": "dcabbad4d0ec17b09128cbe2f312a855a67d5506d54cbe714a203727aa0ccd2a",
+          "bytes": 6921120
+        },
+        "plink.chr20.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr20.GRCh37.map",
+          "sha256": "b939d6d2cbd235b9477ac5a8d7ef96d93b51292c9c196b3675e7636be2165c6f",
+          "bytes": 1973048
+        },
+        "plink.chr21.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr21.GRCh37.map",
+          "sha256": "175df42894f1760e0f6b6505f2a0719f5b14b761f6d89d56b1a4bad56c4ba0ab",
+          "bytes": 1068499
+        },
+        "plink.chr22.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr22.GRCh37.map",
+          "sha256": "f5252f6431901c0c082895f8c4a117a4f2429c7969719a616dadbff6a4cf6f48",
+          "bytes": 1084754
+        },
+        "plink.chr3.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr3.GRCh37.map",
+          "sha256": "5dd0d427b918cd75dce9e47a3fec0940e03fd1e3269a144cfb3528ddc7192f99",
+          "bytes": 5349050
+        },
+        "plink.chr4.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr4.GRCh37.map",
+          "sha256": "90cafb402259a168de78b7ca70314412f1320933e3d78c356256b73a20e212ed",
+          "bytes": 5058603
+        },
+        "plink.chr5.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr5.GRCh37.map",
+          "sha256": "5c2602a1c4737b05890a317aeddf5ab1a101c81c6b065dbcc88e300bfa0a5be4",
+          "bytes": 5142235
+        },
+        "plink.chr6.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr6.GRCh37.map",
+          "sha256": "b81b4e8783b71e4a9fed7ef04f977ca2951b840390ad7ebb6cf0458a9868bbe1",
+          "bytes": 5566969
+        },
+        "plink.chr7.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr7.GRCh37.map",
+          "sha256": "5959279e498ea1ec78f3101cecc421a38836a8e66caa5e77246a757a5bd81493",
+          "bytes": 4371586
+        },
+        "plink.chr8.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr8.GRCh37.map",
+          "sha256": "2549353ade53454eeb5dcbd2b4d3967e52e6315690358cb874d7533fae7b1b68",
+          "bytes": 4499463
+        },
+        "plink.chr9.GRCh37.map": {
+          "dest": "refdata/maps/plink.chr9.GRCh37.map",
+          "sha256": "66f144b03ff1b649c599906d8b2196ebeb6a096d8b457f98d881507fa7072e8b",
+          "bytes": 3711649
+        },
+        "plink.chrX.GRCh37.map": {
+          "dest": "refdata/maps/plink.chrX.GRCh37.map",
+          "sha256": "f0ca3be7c11880f53595c8883a0b36d01fc03feb8faa49277133297537ebb07d",
+          "bytes": 2123668
+        },
+        "plink.chrX_par1.GRCh37.map": {
+          "dest": "refdata/maps/plink.chrX_par1.GRCh37.map",
+          "sha256": "aaedf105698806b53ae36df84b46fac6dfbf2fef3dbf3632f21b2fc33e04177d",
+          "bytes": 29290
+        },
+        "plink.chrX_par2.GRCh37.map": {
+          "dest": "refdata/maps/plink.chrX_par2.GRCh37.map",
+          "sha256": "08ac310e9f090ff11438b45f91fec1f3b15a7d811b7fcf6d78c8d79ffd0b2e20",
+          "bytes": 4117
+        }
+      }
+    },
+    {
+      "key": "panel_chr1",
+      "path": "refdata/panel/chr1.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr1.1kg.phase3.v5a.b37.bref3",
+      "sha256": "3247b638789cf255c0084a011711eccddef08c0529c04a22b837d181e8773d42",
+      "bytes": 538096271,
+      "retrieved_utc": "2026-07-23T00:17:00Z"
+    },
+    {
+      "key": "panel_chr10",
+      "path": "refdata/panel/chr10.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr10.1kg.phase3.v5a.b37.bref3",
+      "sha256": "06da30da724b0b78b5f019124d10a88aa45c7a41a60357f9a6a6b59253a97d94",
+      "bytes": 341429691,
+      "retrieved_utc": "2026-07-23T03:05:31Z"
+    },
+    {
+      "key": "panel_chr11",
+      "path": "refdata/panel/chr11.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr11.1kg.phase3.v5a.b37.bref3",
+      "sha256": "a05d978751b511aef8bc33b4a164d6f4b6b2243e1cc9dca676772208267dfe67",
+      "bytes": 332474064,
+      "retrieved_utc": "2026-07-23T03:12:17Z"
+    },
+    {
+      "key": "panel_chr12",
+      "path": "refdata/panel/chr12.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr12.1kg.phase3.v5a.b37.bref3",
+      "sha256": "15e832382b5e35f7ea8b7ea9f46cacebac94a99f2eb74c56bc1de152224fda34",
+      "bytes": 327714054,
+      "retrieved_utc": "2026-07-23T03:18:45Z"
+    },
+    {
+      "key": "panel_chr13",
+      "path": "refdata/panel/chr13.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr13.1kg.phase3.v5a.b37.bref3",
+      "sha256": "f9f160980484ac9c7da1f167eaf3d494962079c46ed86dd123c3cccba1405a71",
+      "bytes": 241320879,
+      "retrieved_utc": "2026-07-23T03:23:34Z"
+    },
+    {
+      "key": "panel_chr14",
+      "path": "refdata/panel/chr14.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr14.1kg.phase3.v5a.b37.bref3",
+      "sha256": "ec6a3d3cdb23d6bc4e3f19546ba41f6b895938bbbd86ef94235d1e41694d4364",
+      "bytes": 225355199,
+      "retrieved_utc": "2026-07-23T03:28:12Z"
+    },
+    {
+      "key": "panel_chr15",
+      "path": "refdata/panel/chr15.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr15.1kg.phase3.v5a.b37.bref3",
+      "sha256": "6e6e171a044d6006c6c6260095cb4d0139fe869a8e306833f68442b1f9286b47",
+      "bytes": 211304618,
+      "retrieved_utc": "2026-07-23T03:32:34Z"
+    },
+    {
+      "key": "panel_chr16",
+      "path": "refdata/panel/chr16.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr16.1kg.phase3.v5a.b37.bref3",
+      "sha256": "effbd0f6bd9dc20cefa17bb7bc91a9486863cc93d0de375bbad5629db7fdae9d",
+      "bytes": 229911351,
+      "retrieved_utc": "2026-07-23T03:37:08Z"
+    },
+    {
+      "key": "panel_chr17",
+      "path": "refdata/panel/chr17.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr17.1kg.phase3.v5a.b37.bref3",
+      "sha256": "4aa241d5692c1034f30f233611e053fc63a4df43e3b2f2968f9d7b0c87cefe79",
+      "bytes": 202099645,
+      "retrieved_utc": "2026-07-23T03:41:15Z"
+    },
+    {
+      "key": "panel_chr18",
+      "path": "refdata/panel/chr18.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr18.1kg.phase3.v5a.b37.bref3",
+      "sha256": "a006737a2d0173c6e30e3053ca441a3a32cb84604a86c1d86be0786565c74e23",
+      "bytes": 194061409,
+      "retrieved_utc": "2026-07-23T03:45:08Z"
+    },
+    {
+      "key": "panel_chr19",
+      "path": "refdata/panel/chr19.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr19.1kg.phase3.v5a.b37.bref3",
+      "sha256": "ed4b323d4b1faae1c7f3daed97f259ab0d8642ade001c2565bd6f860b26a03ec",
+      "bytes": 171004256,
+      "retrieved_utc": "2026-07-23T03:49:01Z"
+    },
+    {
+      "key": "panel_chr2",
+      "path": "refdata/panel/chr2.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr2.1kg.phase3.v5a.b37.bref3",
+      "sha256": "8d6c41af2af1e91b9018c750d024f71a3d7b9e1a5ba9c1f1a1075e96a5ca1d5f",
+      "bytes": 570900081,
+      "retrieved_utc": "2026-07-23T04:14:18Z"
+    },
+    {
+      "key": "panel_chr20",
+      "path": "refdata/panel/chr20.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr20.1kg.phase3.v5a.b37.bref3",
+      "sha256": "5eba2a97065d12a95a9ffda1b6715a3443e3c145aa33f5e4609a6925ad9aa63d",
+      "bytes": 153844474,
+      "retrieved_utc": "2026-07-23T03:52:25Z"
+    },
+    {
+      "key": "panel_chr21",
+      "path": "refdata/panel/chr21.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr21.1kg.phase3.v5a.b37.bref3",
+      "sha256": "96b424bd787425c70a60fdafe92b246803c3000013931613bf3eabd24b4ab3de",
+      "bytes": 100843132,
+      "retrieved_utc": "2026-07-23T03:54:50Z"
+    },
+    {
+      "key": "panel_chr22",
+      "path": "refdata/panel/chr22.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr22.1kg.phase3.v5a.b37.bref3",
+      "sha256": "ad95694bf54ba427df3dbd7b7ec74098d88fc984a99dfa1f4c612aca6cac2092",
+      "bytes": 104221013,
+      "retrieved_utc": "2026-07-23T03:57:25Z"
+    },
+    {
+      "key": "panel_chr3",
+      "path": "refdata/panel/chr3.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr3.1kg.phase3.v5a.b37.bref3",
+      "sha256": "2d222f07a3f2007a31b9e27a19966ab18b2c43d1e802af24b9544923c34ebc0a",
+      "bytes": 475988388,
+      "retrieved_utc": "2026-07-23T00:57:12Z"
+    },
+    {
+      "key": "panel_chr4",
+      "path": "refdata/panel/chr4.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr4.1kg.phase3.v5a.b37.bref3",
+      "sha256": "a00b81dac5cfd50d4f68d9a8bdbe748db9d7ee730a4a546492bd6a48443814bb",
+      "bytes": 479817516,
+      "retrieved_utc": "2026-07-23T01:09:06Z"
+    },
+    {
+      "key": "panel_chr5",
+      "path": "refdata/panel/chr5.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr5.1kg.phase3.v5a.b37.bref3",
+      "sha256": "64b1e0b12130839314330f88ed4428e1e62a48d483b2d0983ef842476dfc612a",
+      "bytes": 426293904,
+      "retrieved_utc": "2026-07-23T01:26:26Z"
+    },
+    {
+      "key": "panel_chr6",
+      "path": "refdata/panel/chr6.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr6.1kg.phase3.v5a.b37.bref3",
+      "sha256": "3076bc2db3f3c148ffe7b69b3f1794fdde78498825e1e2636b6f277a33b28056",
+      "bytes": 433180692,
+      "retrieved_utc": "2026-07-23T01:56:37Z"
+    },
+    {
+      "key": "panel_chr7",
+      "path": "refdata/panel/chr7.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr7.1kg.phase3.v5a.b37.bref3",
+      "sha256": "944e2ce955780c32948a197c54e902ddf97caa5fb114e23090eb23242d277805",
+      "bytes": 401538411,
+      "retrieved_utc": "2026-07-23T02:41:02Z"
+    },
+    {
+      "key": "panel_chr8",
+      "path": "refdata/panel/chr8.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr8.1kg.phase3.v5a.b37.bref3",
+      "sha256": "1ff6bde256470e20efcf12c2393a07b3dae13015f97182fc8d47d4fbbf958fe8",
+      "bytes": 374379298,
+      "retrieved_utc": "2026-07-23T02:52:46Z"
+    },
+    {
+      "key": "panel_chr9",
+      "path": "refdata/panel/chr9.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr9.1kg.phase3.v5a.b37.bref3",
+      "sha256": "232da4adcec62b739fee108a806392e4ac18705dee0a0de1e85e2d24c4a2e11e",
+      "bytes": 304107685,
+      "retrieved_utc": "2026-07-23T02:58:53Z"
+    },
+    {
+      "key": "phase3_chr1",
+      "path": "refdata/ancestry-ref/phase3/chr1.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "ae0eb80ea07c19033332d17de28fb05128a3f5778d9e16dc8eadcab7e3c21987",
+      "bytes": 1216886729,
+      "retrieved_utc": "2026-07-23T01:34:40Z"
+    },
+    {
+      "key": "phase3_chr10",
+      "path": "refdata/ancestry-ref/phase3/chr10.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr10.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "98ac7174805ad0f7e07a632a673ad9e6b902a330ab3f17bdffe9ecd4e47408e1",
+      "bytes": 773788987,
+      "retrieved_utc": "2026-07-23T18:12:48Z"
+    },
+    {
+      "key": "phase3_chr10_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr10.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr10.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "0c3d42abd86cb059c778add85a2d1affa9e6aff54c0118d5beebdb0858f91ed8",
+      "bytes": 133086,
+      "retrieved_utc": "2026-07-23T18:12:49Z"
+    },
+    {
+      "key": "phase3_chr11",
+      "path": "refdata/ancestry-ref/phase3/chr11.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr11.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "369850b812212911d12cdee9f6246927d2d7be10de56d8966df062374997fab3",
+      "bytes": 767084423,
+      "retrieved_utc": "2026-07-23T18:13:33Z"
+    },
+    {
+      "key": "phase3_chr11_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr11.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr11.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "b9b2e26a192ba7dc5cc3bff20f6fda0bf056dbc8b969001a6522fbecc3cfba25",
+      "bytes": 133331,
+      "retrieved_utc": "2026-07-23T18:13:34Z"
+    },
+    {
+      "key": "phase3_chr12",
+      "path": "refdata/ancestry-ref/phase3/chr12.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr12.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "7946238b4986460160d437fd078c5fe2c7e73642460b873fba433b4fbb78f257",
+      "bytes": 740805962,
+      "retrieved_utc": "2026-07-23T18:14:16Z"
+    },
+    {
+      "key": "phase3_chr12_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr12.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr12.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "2d0853e8d717981e4c080b396fda66e7e1ee376f79cc54fca9effc90cbc4d2d1",
+      "bytes": 133171,
+      "retrieved_utc": "2026-07-23T18:14:17Z"
+    },
+    {
+      "key": "phase3_chr13",
+      "path": "refdata/ancestry-ref/phase3/chr13.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr13.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "5147b2158c3b5711da30d0a47f80e45e2d6553cd991629ed74a7fab0fea16948",
+      "bytes": 556832848,
+      "retrieved_utc": "2026-07-23T18:14:44Z"
+    },
+    {
+      "key": "phase3_chr13_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr13.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr13.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "6ed2c1579dfb23ac1bf61fca9f312bd31cd285ba40cada4feee8fb6f1ca31174",
+      "bytes": 96652,
+      "retrieved_utc": "2026-07-23T18:14:44Z"
+    },
+    {
+      "key": "phase3_chr14",
+      "path": "refdata/ancestry-ref/phase3/chr14.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr14.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "3a66cbf59a086897a93aad824991c32e8547026bed46eacf06d998f6f547e400",
+      "bytes": 506573037,
+      "retrieved_utc": "2026-07-23T18:15:11Z"
+    },
+    {
+      "key": "phase3_chr14_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr14.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr14.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "be511506df9124dae1fa5f696dbe3da5a99a1d69ddb5e6d70b7a78ae5b8dc614",
+      "bytes": 88321,
+      "retrieved_utc": "2026-07-23T18:15:11Z"
+    },
+    {
+      "key": "phase3_chr15",
+      "path": "refdata/ancestry-ref/phase3/chr15.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr15.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "ea8a68acd3966c91cb143811488b97b6ae28f0a40fda3473f0d6c92f0391b409",
+      "bytes": 457900567,
+      "retrieved_utc": "2026-07-23T18:15:34Z"
+    },
+    {
+      "key": "phase3_chr15_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr15.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr15.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "75678339e878c2fa20a558498d92f836bd2f408f2e5437fb4eb44475c9d3298a",
+      "bytes": 81584,
+      "retrieved_utc": "2026-07-23T18:15:35Z"
+    },
+    {
+      "key": "phase3_chr16",
+      "path": "refdata/ancestry-ref/phase3/chr16.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr16.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "59ce6190ce2f6796c3828bd2a37951a1bdb5a549226660f4ff4d81129f8f85bb",
+      "bytes": 495134005,
+      "retrieved_utc": "2026-07-23T18:16:02Z"
+    },
+    {
+      "key": "phase3_chr16_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr16.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr16.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "7407cd5dd354f6d54128863f7fba1a64a6a36b47322ca39457549d10111e68e4",
+      "bytes": 81026,
+      "retrieved_utc": "2026-07-23T18:16:02Z"
+    },
+    {
+      "key": "phase3_chr17",
+      "path": "refdata/ancestry-ref/phase3/chr17.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr17.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "a57a7153b08b8893e1cc7c490627f6344c7bbf808a4457951a27da3e48186498",
+      "bytes": 434623611,
+      "retrieved_utc": "2026-07-23T18:16:22Z"
+    },
+    {
+      "key": "phase3_chr17_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr17.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr17.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "3f1e70d023f2af4e6c457ae55bfc8767e33f8f12078425846cf2c01a0829ac91",
+      "bytes": 79187,
+      "retrieved_utc": "2026-07-23T18:16:23Z"
+    },
+    {
+      "key": "phase3_chr18",
+      "path": "refdata/ancestry-ref/phase3/chr18.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr18.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "1133297f17f798556c03f41d0c3e4ed81fd4bdde082ac98549e26a3b5034a815",
+      "bytes": 436425683,
+      "retrieved_utc": "2026-07-23T18:16:43Z"
+    },
+    {
+      "key": "phase3_chr18_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr18.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr18.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "8e384779a0b35797d4ed9282d3a856d5bcccc592913ca12ec9f49dcc9133bcad",
+      "bytes": 74610,
+      "retrieved_utc": "2026-07-23T18:16:44Z"
+    },
+    {
+      "key": "phase3_chr19",
+      "path": "refdata/ancestry-ref/phase3/chr19.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "153faed13243e929e06cde451eb29e3622d275406973c09fd0cfe24e56d258e9",
+      "bytes": 359519603,
+      "retrieved_utc": "2026-07-23T18:17:13Z"
+    },
+    {
+      "key": "phase3_chr19_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr19.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "f0ed2905c59d7200118b62be83c517930280589c0083d9c6a3f0538a16eaa21c",
+      "bytes": 55477,
+      "retrieved_utc": "2026-07-23T18:17:13Z"
+    },
+    {
+      "key": "phase3_chr1_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr1.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "08f3d07bcbb0df60ed8054e077d293bae9b21af5a39881e97bf09433cc41dc54",
+      "bytes": 224660,
+      "retrieved_utc": "2026-07-23T01:34:40Z"
+    },
+    {
+      "key": "phase3_chr2",
+      "path": "refdata/ancestry-ref/phase3/chr2.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "93f046aac1c2126eed856298fb46db74970f41afef6b604458e62362a3a7ca88",
+      "bytes": 1312735578,
+      "retrieved_utc": "2026-07-23T01:42:49Z"
+    },
+    {
+      "key": "phase3_chr20",
+      "path": "refdata/ancestry-ref/phase3/chr20.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr20.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "4a0b61d6d7ed46b029d4f07164c554c6b8124e40c4eb9807a45c624eb714afa8",
+      "bytes": 341680844,
+      "retrieved_utc": "2026-07-23T18:17:30Z"
+    },
+    {
+      "key": "phase3_chr20_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr20.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr20.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "282b3b43f172a1899b87db48303d31f8326373cff5f101469a2b6ee7438074a2",
+      "bytes": 56516,
+      "retrieved_utc": "2026-07-23T18:17:30Z"
+    },
+    {
+      "key": "phase3_chr21",
+      "path": "refdata/ancestry-ref/phase3/chr21.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr21.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "086fc3a2e13cdf256f217509477669f7ec1f609c21cdb6f58c17588bf99acc39",
+      "bytes": 218612970,
+      "retrieved_utc": "2026-07-23T18:17:44Z"
+    },
+    {
+      "key": "phase3_chr21_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr21.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr21.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "c70b14abc197c3cd4874b9474bd1476707a6011c802bf5b570efaedbd6d17441",
+      "bytes": 35357,
+      "retrieved_utc": "2026-07-23T18:17:44Z"
+    },
+    {
+      "key": "phase3_chr22",
+      "path": "refdata/ancestry-ref/phase3/chr22.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "5d52145d6e3be132dc19ff525af2ae2e792511e60c49c148cb8eee669f114c2c",
+      "bytes": 214453750,
+      "retrieved_utc": "2026-07-23T18:17:54Z"
+    },
+    {
+      "key": "phase3_chr22_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr22.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "7bb5143a712c3cc9af9cb3ad2cc4a6fb287a79f2534e41028cb64f302d27a8cc",
+      "bytes": 36078,
+      "retrieved_utc": "2026-07-23T18:17:54Z"
+    },
+    {
+      "key": "phase3_chr2_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr2.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "04f776211dd6b943c0f83bf160c6fd3484860971c7d7497cf4f180bd45845c5f",
+      "bytes": 238011,
+      "retrieved_utc": "2026-07-23T01:42:49Z"
+    },
+    {
+      "key": "phase3_chr3",
+      "path": "refdata/ancestry-ref/phase3/chr3.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "31123d852e4dce03bbd16de7cf4168d1c66aa2e7ab4db487e7f6329aa32b7256",
+      "bytes": 1105776520,
+      "retrieved_utc": "2026-07-23T01:50:16Z"
+    },
+    {
+      "key": "phase3_chr3_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr3.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "677449489f422beb1429fa216a3965aad4e0b8876a0a3248ec6f122ae2e94099",
+      "bytes": 196236,
+      "retrieved_utc": "2026-07-23T01:50:16Z"
+    },
+    {
+      "key": "phase3_chr4",
+      "path": "refdata/ancestry-ref/phase3/chr4.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr4.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "a95ae4318a740c3ae65762790f31c60baa93d95153377b740866eaa4c4a7d018",
+      "bytes": 1117054318,
+      "retrieved_utc": "2026-07-23T01:56:28Z"
+    },
+    {
+      "key": "phase3_chr4_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr4.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr4.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "eb4a0c99f7433bc26da39e842229a0b761f82ab8eafbc76ffafdf352ac03d24b",
+      "bytes": 188993,
+      "retrieved_utc": "2026-07-23T01:56:29Z"
+    },
+    {
+      "key": "phase3_chr5",
+      "path": "refdata/ancestry-ref/phase3/chr5.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr5.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "a4a1160c7bf65d3a76f177492d5e49eac78d3636e98d3326bf69a15bdae9a441",
+      "bytes": 989263345,
+      "retrieved_utc": "2026-07-23T02:03:45Z"
+    },
+    {
+      "key": "phase3_chr5_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr5.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr5.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "22b508f33f2a75043c3003be39105b1bf40a069c96547c4ada51773e5fe8f6a7",
+      "bytes": 176777,
+      "retrieved_utc": "2026-07-23T02:03:46Z"
+    },
+    {
+      "key": "phase3_chr6",
+      "path": "refdata/ancestry-ref/phase3/chr6.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr6.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "0f89d8da7d25db7dc639580785da47e49bb398ccfaf442f7406a71eab95b3912",
+      "bytes": 999436830,
+      "retrieved_utc": "2026-07-23T02:12:11Z"
+    },
+    {
+      "key": "phase3_chr6_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr6.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr6.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "aacfccecc05f566a0abf2299997c448654a5feb9beff54c335da7fb2c0b87558",
+      "bytes": 169549,
+      "retrieved_utc": "2026-07-23T02:12:12Z"
+    },
+    {
+      "key": "phase3_chr7",
+      "path": "refdata/ancestry-ref/phase3/chr7.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr7.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "74032eb676d56f6f65bf84db3964d77fd50312f9b572b268fcbdf0bbb9de6fa5",
+      "bytes": 908031088,
+      "retrieved_utc": "2026-07-23T18:18:01Z"
+    },
+    {
+      "key": "phase3_chr7_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr7.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr7.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "acbb8a6fa9d9edc7a4821557549b1b4e61f57dc95acafdd827777da4c790960f",
+      "bytes": 158064,
+      "retrieved_utc": "2026-07-23T18:18:02Z"
+    },
+    {
+      "key": "phase3_chr8",
+      "path": "refdata/ancestry-ref/phase3/chr8.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr8.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "f51063a9646c6a11c19eb08ef51d53a2eba54de51075eb4e94979724bea59f0e",
+      "bytes": 861233457,
+      "retrieved_utc": "2026-07-23T02:33:18Z"
+    },
+    {
+      "key": "phase3_chr8_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr8.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr8.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "4a126778d754cd84434cc621b088f57704f91bfd36801e9d1c24d6228ae63c6a",
+      "bytes": 146204,
+      "retrieved_utc": "2026-07-23T02:33:18Z"
+    },
+    {
+      "key": "phase3_chr9",
+      "path": "refdata/ancestry-ref/phase3/chr9.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr9.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz",
+      "sha256": "d40bfb56fb15589842ed3e53805ff51c4e3bccaa3814a730f5c778e16a433d17",
+      "bytes": 672879733,
+      "retrieved_utc": "2026-07-23T18:10:10Z"
+    },
+    {
+      "key": "phase3_chr9_tbi",
+      "path": "refdata/ancestry-ref/phase3/chr9.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.chr9.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz.tbi",
+      "sha256": "df6c1940e827f6d70cdc32b11bc646096cd01b3c83e510d8debe64b7e7a495b1",
+      "bytes": 121082,
+      "retrieved_utc": "2026-07-23T18:10:11Z"
+    },
+    {
+      "key": "plink2",
+      "path": "refdata-downloads/plink2_linux_x86_64_20250116.zip",
+      "url": "https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_x86_64_20250116.zip",
+      "sha256": "d70fdbec0c2732cf7dbdc15d1d52b60a22ec873d6463e7e785b61c7ebb16680e",
+      "bytes": 10368744,
+      "retrieved_utc": "2026-08-26T07:57:50Z",
+      "verified_utc": "2026-09-23T16:47:00Z",
+      "member": {
+        "name": "plink2",
+        "dest": "refdata/bin/plink2",
+        "sha256": "469bdf52266b984e4acbcb68db7efc69ac4f550d64a95fd257e66989be330d49",
+        "bytes": 42492200,
+        "version": "PLINK v2.0.0-a.6.6LM 64-bit Intel (16 Jan 2025)"
+      },
+      "note": "The binary every published run used and the one agent/tools/ancestry.py calls. retrieved_utc is when the working box's bin/plink2 was written; the zip's sha256 is from a full download at verified_utc. previous_record is the original manifest's record: the macOS arm64 a.7.1 binary that built ancestry-ref/hgdp_basis on 2026-08-12, whose path put a zip URL at refdata/bin/plink2.",
+      "previous_record": {
+        "key": "plink2",
+        "path": "refdata/bin/plink2",
+        "url": "https://s3.amazonaws.com/plink2-assets/alpha7/plink2_mac_arm64_20260504.zip",
+        "sha256": "021971ceb46484797eacc11fad421a99b05764cc00d748b8d23ac8a51a886fc7",
+        "bytes": 3450280,
+        "retrieved_utc": "2026-07-22T23:50:01Z"
+      }
+    },
+    {
+      "key": "sites_tbi",
+      "path": "refdata/panel/1kg.phase3.v5b.sites.b37.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.wgs.phase3_shapeit2_mvncall_integrated_v5b.20130502.sites.vcf.gz.tbi",
+      "sha256": "300c76dd9f12184602ffb033b92054d72b6f196a96709856b0f14469c43b3aab",
+      "bytes": 2463880,
+      "retrieved_utc": "2026-07-23T01:22:05Z"
+    },
+    {
+      "key": "sites_vcf",
+      "path": "refdata/panel/1kg.phase3.v5b.sites.b37.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.wgs.phase3_shapeit2_mvncall_integrated_v5b.20130502.sites.vcf.gz",
+      "sha256": "2dbbd090e3e0585786e9c2c3ac36247698a9bf33455e7905d0e971617682b8f7",
+      "bytes": 1980074620,
+      "retrieved_utc": "2026-07-23T01:22:03Z"
+    },
+    {
+      "key": "unbref3",
+      "path": "refdata/bin/unbref3.jar",
+      "url": "https://faculty.washington.edu/browning/beagle/unbref3.27Feb25.75f.jar",
+      "sha256": "db8998ff212b19f72fd0e36e8cd9ef9b4e414d6a6c295fe89ee77858970cfb4a",
+      "bytes": 95110,
+      "retrieved_utc": "2026-07-22T22:29:02Z"
+    }
+  ]
+}

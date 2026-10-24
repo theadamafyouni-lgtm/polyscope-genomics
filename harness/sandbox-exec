@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""A `sandbox-exec` that speaks bubblewrap. Linux only.
+
+The harness launches every agent as:
+
+    /usr/bin/sandbox-exec -f <profile> <command> [args...]
+
+That call site appears in agents.py, probe.py and run_harness.py. Rather than
+patch three files and keep them in step with the macOS originals, this shim
+takes the same arguments and does the same job with bwrap, so the harness does
+not know which platform it is on.
+
+The profile file is not SBPL. On this platform it is one bubblewrap argument per
+line, written by the Linux profile.py. Blank lines and lines beginning with # are
+ignored, so the profile can carry its own reasoning the way the SBPL one does.
+
+The environment is passed through untouched. The harness already builds a
+complete environment and hands it to subprocess, and bwrap inherits it, so there
+are no --setenv lines in the profile and no place for a variable to be added here
+that the harness did not choose.
+
+Install at /usr/bin/sandbox-exec, mode 755.
+"""
+
+import os
+import shutil
+import sys
+
+
+def die(msg, code=2):
+    sys.stderr.write("sandbox-exec(bwrap shim): %s\n" % msg)
+    sys.exit(code)
+
+
+def read_profile(path):
+    args = []
+    try:
+        with open(path) as fh:
+            for raw in fh:
+                line = raw.rstrip("\n")
+                if not line.strip() or line.lstrip().startswith("#"):
+                    continue
+                args.append(line)
+    except OSError as exc:
+        die("cannot read profile %s: %s" % (path, exc))
+    if not args:
+        die("profile %s is empty; refusing to run unsandboxed" % path)
+    return args
+
+
+def main(argv):
+    if len(argv) < 4 or argv[1] != "-f":
+        die("usage: sandbox-exec -f <profile> <command> [args...]\n"
+            "       got: %s" % " ".join(argv[1:6]))
+
+    profile_path = argv[2]
+    command = argv[3:]
+    if not command:
+        die("no command given")
+
+    bwrap = shutil.which("bwrap") or "/usr/bin/bwrap"
+    if not os.path.exists(bwrap):
+        die("bubblewrap is not installed; apt-get install bubblewrap")
+
+    # `--` separates bwrap's own arguments from the command, so a command
+    # argument that looks like a bwrap flag cannot be read as one.
+    full = [bwrap] + read_profile(profile_path) + ["--"] + command
+
+    if os.environ.get("SANDBOX_EXEC_SHIM_DEBUG"):
+        sys.stderr.write("+ %s\n" % " ".join(full))
+
+    try:
+        os.execv(bwrap, full)
+    except OSError as exc:
+        die("could not exec bwrap: %s" % exc)
+
+
+if __name__ == "__main__":
+    main(sys.argv)

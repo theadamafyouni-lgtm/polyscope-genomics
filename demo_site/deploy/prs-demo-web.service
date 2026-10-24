@@ -1,0 +1,41 @@
+[Unit]
+Description=Private prs-agent demo website (loopback only)
+After=prs-demo-worker.service
+Wants=prs-demo-worker.service
+
+[Service]
+Type=simple
+User=prs-demo
+Group=prs-demo
+WorkingDirectory=/srv/prs-demo
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PRS_DEMO_ORIGIN=http://localhost:8765
+EnvironmentFile=-/etc/prs-demo-web.conf
+ExecStart=/usr/bin/python3 -m demo_site.web --origin ${PRS_DEMO_ORIGIN} --trust-funnel
+StateDirectory=prs-demo-web
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET
+IPAddressDeny=any
+IPAddressAllow=localhost
+CapabilityBoundingSet=
+MemoryMax=384M
+TasksMax=64
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

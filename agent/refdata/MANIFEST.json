@@ -1,0 +1,262 @@
+{
+  "note": "Run-time capture of external artifacts (DATA-6, R6). Not version pinning: these identifiers record what was used, they do not freeze it.",
+  "assembled_utc": "2026-07-23T04:14:18Z",
+  "artifacts": [
+    {
+      "key": "ancestry_panel",
+      "path": "refdata/ancestry-ref/integrated_call_samples_v3.20130502.ALL.panel",
+      "url": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel",
+      "sha256": "b4023dc6ee2d62ee89c8d4d347db4d348e65518d66d346574cdae7a4bbd76858",
+      "bytes": 55156,
+      "retrieved_utc": "2026-07-22T22:58:29Z"
+    },
+    {
+      "key": "ancestry_vcf",
+      "path": "refdata/ancestry-ref/1kg.omni_broad_sanger_combined.b37.vcf.gz",
+      "url": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.chip.omni_broad_sanger_combined.20140818.snps.genotypes.vcf.gz",
+      "sha256": "24060fab7520163138abac339e183aacdb3a530d9d16aecd2f017533c1026e5b",
+      "bytes": 1331157654,
+      "retrieved_utc": "2026-07-23T00:25:54Z"
+    },
+    {
+      "key": "beagle",
+      "path": "refdata/bin/beagle.jar",
+      "url": "https://faculty.washington.edu/browning/beagle/beagle.27Feb25.75f.jar",
+      "sha256": "7319f4af9638be05c18dcc1bfb8fb41a58a09293507ebf0d54617d0e40df5a70",
+      "bytes": 316844,
+      "retrieved_utc": "2026-07-22T22:29:01Z"
+    },
+    {
+      "key": "fasta",
+      "path": "refdata/tmp/GRCh37.fa.gz",
+      "url": "https://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz",
+      "sha256": "0a43b56dec40debae976d6e70cac68ea6ed874f9fb7c8c814363702ff1d47865",
+      "bytes": 869923173,
+      "retrieved_utc": "2026-07-22T22:57:15Z"
+    },
+    {
+      "key": "jre",
+      "path": "refdata/tmp/jre.tar.gz",
+      "url": "https://api.adoptium.net/v3/binary/latest/21/ga/mac/aarch64/jre/hotspot/normal/eclipse",
+      "sha256": "4b7a8cd23102c251c8b8be42a9a5f1263fb337cf1037f6f64b25f3070efe4b76",
+      "bytes": 48149317,
+      "retrieved_utc": "2026-07-22T22:28:58Z"
+    },
+    {
+      "key": "maps",
+      "path": "refdata/tmp/maps.zip",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/plink.GRCh37.map.zip",
+      "sha256": "8e88141345844571bc63efac6c043ee29e8ca41f26087dc51b7f1918943a077b",
+      "bytes": 23913120,
+      "retrieved_utc": "2026-07-22T22:29:28Z"
+    },
+    {
+      "key": "panel_chr1",
+      "path": "refdata/panel/chr1.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr1.1kg.phase3.v5a.b37.bref3",
+      "sha256": "3247b638789cf255c0084a011711eccddef08c0529c04a22b837d181e8773d42",
+      "bytes": 538096271,
+      "retrieved_utc": "2026-07-23T00:17:00Z"
+    },
+    {
+      "key": "panel_chr10",
+      "path": "refdata/panel/chr10.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr10.1kg.phase3.v5a.b37.bref3",
+      "sha256": "06da30da724b0b78b5f019124d10a88aa45c7a41a60357f9a6a6b59253a97d94",
+      "bytes": 341429691,
+      "retrieved_utc": "2026-07-23T03:05:31Z"
+    },
+    {
+      "key": "panel_chr11",
+      "path": "refdata/panel/chr11.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr11.1kg.phase3.v5a.b37.bref3",
+      "sha256": "a05d978751b511aef8bc33b4a164d6f4b6b2243e1cc9dca676772208267dfe67",
+      "bytes": 332474064,
+      "retrieved_utc": "2026-07-23T03:12:17Z"
+    },
+    {
+      "key": "panel_chr12",
+      "path": "refdata/panel/chr12.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr12.1kg.phase3.v5a.b37.bref3",
+      "sha256": "15e832382b5e35f7ea8b7ea9f46cacebac94a99f2eb74c56bc1de152224fda34",
+      "bytes": 327714054,
+      "retrieved_utc": "2026-07-23T03:18:45Z"
+    },
+    {
+      "key": "panel_chr13",
+      "path": "refdata/panel/chr13.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr13.1kg.phase3.v5a.b37.bref3",
+      "sha256": "f9f160980484ac9c7da1f167eaf3d494962079c46ed86dd123c3cccba1405a71",
+      "bytes": 241320879,
+      "retrieved_utc": "2026-07-23T03:23:34Z"
+    },
+    {
+      "key": "panel_chr14",
+      "path": "refdata/panel/chr14.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr14.1kg.phase3.v5a.b37.bref3",
+      "sha256": "ec6a3d3cdb23d6bc4e3f19546ba41f6b895938bbbd86ef94235d1e41694d4364",
+      "bytes": 225355199,
+      "retrieved_utc": "2026-07-23T03:28:12Z"
+    },
+    {
+      "key": "panel_chr15",
+      "path": "refdata/panel/chr15.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr15.1kg.phase3.v5a.b37.bref3",
+      "sha256": "6e6e171a044d6006c6c6260095cb4d0139fe869a8e306833f68442b1f9286b47",
+      "bytes": 211304618,
+      "retrieved_utc": "2026-07-23T03:32:34Z"
+    },
+    {
+      "key": "panel_chr16",
+      "path": "refdata/panel/chr16.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr16.1kg.phase3.v5a.b37.bref3",
+      "sha256": "effbd0f6bd9dc20cefa17bb7bc91a9486863cc93d0de375bbad5629db7fdae9d",
+      "bytes": 229911351,
+      "retrieved_utc": "2026-07-23T03:37:08Z"
+    },
+    {
+      "key": "panel_chr17",
+      "path": "refdata/panel/chr17.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr17.1kg.phase3.v5a.b37.bref3",
+      "sha256": "4aa241d5692c1034f30f233611e053fc63a4df43e3b2f2968f9d7b0c87cefe79",
+      "bytes": 202099645,
+      "retrieved_utc": "2026-07-23T03:41:15Z"
+    },
+    {
+      "key": "panel_chr18",
+      "path": "refdata/panel/chr18.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr18.1kg.phase3.v5a.b37.bref3",
+      "sha256": "a006737a2d0173c6e30e3053ca441a3a32cb84604a86c1d86be0786565c74e23",
+      "bytes": 194061409,
+      "retrieved_utc": "2026-07-23T03:45:08Z"
+    },
+    {
+      "key": "panel_chr19",
+      "path": "refdata/panel/chr19.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr19.1kg.phase3.v5a.b37.bref3",
+      "sha256": "ed4b323d4b1faae1c7f3daed97f259ab0d8642ade001c2565bd6f860b26a03ec",
+      "bytes": 171004256,
+      "retrieved_utc": "2026-07-23T03:49:01Z"
+    },
+    {
+      "key": "panel_chr2",
+      "path": "refdata/panel/chr2.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr2.1kg.phase3.v5a.b37.bref3",
+      "sha256": "8d6c41af2af1e91b9018c750d024f71a3d7b9e1a5ba9c1f1a1075e96a5ca1d5f",
+      "bytes": 570900081,
+      "retrieved_utc": "2026-07-23T04:14:18Z"
+    },
+    {
+      "key": "panel_chr20",
+      "path": "refdata/panel/chr20.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr20.1kg.phase3.v5a.b37.bref3",
+      "sha256": "5eba2a97065d12a95a9ffda1b6715a3443e3c145aa33f5e4609a6925ad9aa63d",
+      "bytes": 153844474,
+      "retrieved_utc": "2026-07-23T03:52:25Z"
+    },
+    {
+      "key": "panel_chr21",
+      "path": "refdata/panel/chr21.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr21.1kg.phase3.v5a.b37.bref3",
+      "sha256": "96b424bd787425c70a60fdafe92b246803c3000013931613bf3eabd24b4ab3de",
+      "bytes": 100843132,
+      "retrieved_utc": "2026-07-23T03:54:50Z"
+    },
+    {
+      "key": "panel_chr22",
+      "path": "refdata/panel/chr22.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr22.1kg.phase3.v5a.b37.bref3",
+      "sha256": "ad95694bf54ba427df3dbd7b7ec74098d88fc984a99dfa1f4c612aca6cac2092",
+      "bytes": 104221013,
+      "retrieved_utc": "2026-07-23T03:57:25Z"
+    },
+    {
+      "key": "panel_chr3",
+      "path": "refdata/panel/chr3.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr3.1kg.phase3.v5a.b37.bref3",
+      "sha256": "2d222f07a3f2007a31b9e27a19966ab18b2c43d1e802af24b9544923c34ebc0a",
+      "bytes": 475988388,
+      "retrieved_utc": "2026-07-23T00:57:12Z"
+    },
+    {
+      "key": "panel_chr4",
+      "path": "refdata/panel/chr4.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr4.1kg.phase3.v5a.b37.bref3",
+      "sha256": "a00b81dac5cfd50d4f68d9a8bdbe748db9d7ee730a4a546492bd6a48443814bb",
+      "bytes": 479817516,
+      "retrieved_utc": "2026-07-23T01:09:06Z"
+    },
+    {
+      "key": "panel_chr5",
+      "path": "refdata/panel/chr5.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr5.1kg.phase3.v5a.b37.bref3",
+      "sha256": "64b1e0b12130839314330f88ed4428e1e62a48d483b2d0983ef842476dfc612a",
+      "bytes": 426293904,
+      "retrieved_utc": "2026-07-23T01:26:26Z"
+    },
+    {
+      "key": "panel_chr6",
+      "path": "refdata/panel/chr6.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr6.1kg.phase3.v5a.b37.bref3",
+      "sha256": "3076bc2db3f3c148ffe7b69b3f1794fdde78498825e1e2636b6f277a33b28056",
+      "bytes": 433180692,
+      "retrieved_utc": "2026-07-23T01:56:37Z"
+    },
+    {
+      "key": "panel_chr7",
+      "path": "refdata/panel/chr7.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr7.1kg.phase3.v5a.b37.bref3",
+      "sha256": "944e2ce955780c32948a197c54e902ddf97caa5fb114e23090eb23242d277805",
+      "bytes": 401538411,
+      "retrieved_utc": "2026-07-23T02:41:02Z"
+    },
+    {
+      "key": "panel_chr8",
+      "path": "refdata/panel/chr8.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr8.1kg.phase3.v5a.b37.bref3",
+      "sha256": "1ff6bde256470e20efcf12c2393a07b3dae13015f97182fc8d47d4fbbf958fe8",
+      "bytes": 374379298,
+      "retrieved_utc": "2026-07-23T02:52:46Z"
+    },
+    {
+      "key": "panel_chr9",
+      "path": "refdata/panel/chr9.1kg.phase3.v5a.b37.bref3",
+      "url": "https://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.bref3/chr9.1kg.phase3.v5a.b37.bref3",
+      "sha256": "232da4adcec62b739fee108a806392e4ac18705dee0a0de1e85e2d24c4a2e11e",
+      "bytes": 304107685,
+      "retrieved_utc": "2026-07-23T02:58:53Z"
+    },
+    {
+      "key": "plink2",
+      "path": "refdata/bin/plink2",
+      "url": "https://s3.amazonaws.com/plink2-assets/alpha7/plink2_mac_arm64_20260504.zip",
+      "sha256": "021971ceb46484797eacc11fad421a99b05764cc00d748b8d23ac8a51a886fc7",
+      "bytes": 3450280,
+      "retrieved_utc": "2026-07-22T23:50:01Z"
+    },
+    {
+      "key": "sites_tbi",
+      "path": "refdata/panel/1kg.phase3.v5b.sites.b37.vcf.gz.tbi",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.wgs.phase3_shapeit2_mvncall_integrated_v5b.20130502.sites.vcf.gz.tbi",
+      "sha256": "300c76dd9f12184602ffb033b92054d72b6f196a96709856b0f14469c43b3aab",
+      "bytes": 2463880,
+      "retrieved_utc": "2026-07-23T01:22:05Z"
+    },
+    {
+      "key": "sites_vcf",
+      "path": "refdata/panel/1kg.phase3.v5b.sites.b37.vcf.gz",
+      "url": "https://1000genomes.s3.amazonaws.com/release/20130502/ALL.wgs.phase3_shapeit2_mvncall_integrated_v5b.20130502.sites.vcf.gz",
+      "sha256": "2dbbd090e3e0585786e9c2c3ac36247698a9bf33455e7905d0e971617682b8f7",
+      "bytes": 1980074620,
+      "retrieved_utc": "2026-07-23T01:22:03Z"
+    },
+    {
+      "key": "unbref3",
+      "path": "refdata/bin/unbref3.jar",
+      "url": "https://faculty.washington.edu/browning/beagle/unbref3.27Feb25.75f.jar",
+      "sha256": "db8998ff212b19f72fd0e36e8cd9ef9b4e414d6a6c295fe89ee77858970cfb4a",
+      "bytes": 95110,
+      "retrieved_utc": "2026-07-22T22:29:02Z"
+    }
+  ]
+}

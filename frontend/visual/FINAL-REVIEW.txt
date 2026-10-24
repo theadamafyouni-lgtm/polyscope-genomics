@@ -1,0 +1,80 @@
+Historical review of the accepted UI, before the helix-only follow-up.
+For the current helix and animation checks, see HELIX-REVIEW.txt.
+
+UI REFRESH — FINAL LOCAL REVIEW
+
+Implemented the selected A layout with B's serif display typography and
+“Genetics, with context.” Kept the existing palette. Manrope and Newsreader are
+self-hosted, licensed, and bundled through existing public assets. No serving
+routes or CSP changes were needed.
+
+The workspace leads with the current reported step, a plain explanation, elapsed
+time against the user's 70–100 minute estimate, and whether an answer is needed.
+The moving DNA illustration uses one CSS transform, slows when waiting, pauses
+in hidden tabs and becomes static under reduced motion. A question leads the
+screen, changes the tab title and makes an assertive announcement. Sound and
+notifications require opt-in; permission denial is handled. Typed answers and
+focus survive polling. Raw event notes live inside native technical details.
+
+The result leads with the exact delivered percentile, then the actual reference
+comparison, evidence and delivered limits. Small raw distributions use every
+recorded score as a dot; large distributions use complete counts in bins. If the
+run provides only quantiles, the chart labels those recorded ranges instead of
+inventing a distribution. The patient's recorded score is marked. No reported
+score, percentile, coverage, warning, refusal or explanation is changed.
+
+Data limitations
+- No per-chromosome completion events reach the browser. Imputation's chromosome
+  detail exists in tool stderr/final artifacts, while public progress events
+  expose only stage/kind/time/text/outcome. No chromosome display was invented.
+- Remaining time is an estimate, not a completion percentage. It requires a real
+  retained run_started timestamp. Missing start time suppresses the countdown.
+- The separate nginx service-outage page is unchanged. Its response string cannot
+  accommodate the fonts within nginx's configuration token limit; updating its
+  serving configuration is beyond the permitted page-text scope. The disconnected
+  workspace state is redesigned, captured and tested.
+
+Review artifacts: /root/reviews/ui-shots/after
+- 18 final full-page PNGs: all nine states on desktop (1440px) and phone (390px).
+- contact-desktop.png and contact-phone.png: all first viewports at a glance.
+- running-desktop.webm and running-phone.webm: 14 seconds each, after fonts load.
+- manifest.json, checks.json and recording-manifest.json: capture/check evidence.
+- round-0/ and round-1/: screenshots retained from the two critique rounds.
+- frontend/visual/CRITIQUES.txt: observations, changes and final visual review.
+
+Screenshots use existing synthetic test fixtures with documented provenance,
+not patient data or a new scientific run. Every scientific number and delivered
+sentence in those fixtures is retained. No agent, harness, live site or gb10 was
+launched/contacted for the visual work. Recordings and browser fixtures make no
+external requests or API mutations.
+
+Validation
+- npm test: 125 passed.
+- node --test frontend/visual/presentation.test.mjs: 5 passed.
+- python3 -m pytest -q tests/test_demo_*.py demo_site/test_worker_progress.py:
+  89 passed, 41 subtests passed.
+- Final production-entry browser review: 244 assertions passed across 18 views,
+  including original CSP/asset allowlist, permission grant/denial, keyboard,
+  focus/draft persistence, 320px layout, motion and font checks.
+- Axe: zero WCAG A/AA violations in those captures.
+- Browser glyph audit: 14,790 glyphs, only Manrope/Newsreader, zero fallback glyphs.
+- Helix: 26s normal / 68s waiting cycle, hidden-tab pause, reduced-motion still,
+  no requestAnimationFrame loop. A 2.018s headless sample used 0.01436s main-thread
+  task time with zero layout work. This is a short check, not an hour-long benchmark.
+- Both no-JavaScript instructions remain visible.
+- Build completed; git diff --check passed.
+
+Broader repository check
+  env -u GB10_GATE_SCRIPT python3 -m pytest -q tests demo_site/test_worker_progress.py
+  159 passed, 76 subtests passed, 6 skipped, 2 failed. The two failures are:
+  tests/test_gb10_harness.py::KeyProbeTest::test_probe_finds_the_key_unreachable_and_would_catch_a_reachable_one
+  tests/test_gb10_harness.py::RouteTest::test_gb10_sandbox_cannot_run_or_reach_beagle_and_cannot_change_the_switch
+  Both stop at “bwrap: setting up uid map: Permission denied” in this container.
+  These are local synthetic tests, with no SSH or gb10 connection. No harness or
+  test code was changed to bypass the environment restriction.
+
+Scope and delivery
+Changes are confined to frontend/ plus two visible error strings in
+demo_site/worker.py. Agent, harness, scoring, report generation and deployment
+configuration are unchanged. Branch: ui-refresh. Lowercase commits, no co-author
+trailers. No push or deployment.

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#173f35">
+    <title>Analysis · prs-agent</title>
+    <link rel="icon" href="/mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./direction-a.css">
+    <link rel="stylesheet" href="./direction-b.css">
+    <script type="module" src="./direction.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="preview"></div>
+    <div class="review-bar">
+      <p id="review-label"></p>
+      <nav aria-label="Review fixtures">
+        <a href="?state=running" data-state="running">Running</a>
+        <a href="?state=waiting-answer" data-state="waiting-answer">Question</a>
+        <a href="?state=finished-score" data-state="finished-score">Score</a>
+        <a href="?state=finished-refusal" data-state="finished-refusal">Refusal</a>
+        <a id="other-direction" href="?direction=b">Compare direction</a>
+      </nav>
+      <p id="review-status" class="review-status" role="status" aria-live="polite"></p>
+    </div>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  </body>
+</html>

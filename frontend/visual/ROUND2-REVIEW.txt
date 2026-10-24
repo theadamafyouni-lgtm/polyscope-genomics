@@ -1,0 +1,74 @@
+UI ROUND 2 — LOCAL REVIEW ONLY
+
+Base and scope
+  Fetched origin/review-fixes from /root/CliGenAI-Lab/prs-agent-product.
+  Started ui-round2 at ac9cc9e, preserving the live upload progress, measured
+  estimates, percentile-range contract and session lifetime behavior.
+  Changes are confined to frontend source, generated assets and review tools.
+  No agent, harness, scoring, report artifact or server changes. No push/deploy.
+
+Completed
+  1. One stick figure for every comparison person whose raw score was supplied.
+     A separate blue figure represents the person being assessed; it is not
+     included in the comparison count. Duplicate scores keep separate figures.
+     The caption uses exact lower/equal/higher counts, checked against the raw
+     scores, group size and every supplied count artifact. The adapter's exact
+     comparison score takes precedence over rounded report values for ties.
+     The headline retains both bounds exactly as written in the delivered
+     report. Interpretation precision and every supplied raw value remain in
+     the comparison details. No midpoint or single percentile is calculated.
+     Counts describe observed people; the range explains sample uncertainty.
+     No ancestry-similarity claim is made without supporting run text.
+     Missing individual scores do not become invented people. Conflicting
+     counts suppress the pictogram. Large groups retain every person and scroll.
+     Native text provides the accessible equivalent; figures are decorative.
+
+  2. Plain UI wording: Start analysis, Show sample files, Show step details,
+     Turn on/off alerts, Try again, Stop and delete files, Delete these files.
+     Transport messages use analysis instead of agent, and explain capacity
+     and unpacking plainly. Supplied report prose and error reasons are intact.
+     Archived direction previews also handle the current range contract.
+
+Critique round 1 — round-1/ screenshots
+  The count-based figures were easy to distinguish from a numerical chart.
+  Phone captions and the uncertainty note inherited overly small type.
+  Increased their size and line spacing. Reduced the competing display label
+  under the main number to a quiet sans label, 'out of 100 · reported range'.
+
+Critique round 2 — round-2/ screenshots and final wrapping checks
+  Showing rounded headline bounds and precise interpretation bounds together
+  made one answer look like two ranges. Kept the delivered range up front and
+  moved the interpretation precision to details. Clarified that figure spacing
+  does not measure score distance. Checked the three-person fixture and an
+  explicitly labeled 150-person isolated layout, including a 320px phone.
+  Figures wrap without omissions, and You remains separate and unmistakable.
+  Added stable focus IDs to the comparison disclosure and scrollable region.
+
+Validation
+  npm run build --prefix frontend
+  npm test: 151 passing tests.
+  node --test frontend/visual/presentation.test.mjs: 5 passing tests.
+  python3 -m pytest -q tests/test_demo_*.py demo_site/test_worker_progress.py:
+    112 passed, 57 subtests passed.
+  check-refresh.mjs: 246 checks passed across 18 accessibility scenarios,
+    two notification scenarios and the existing motion checks. Zero axe
+    violations, fallback-font elements or failed checks. Production CSP and
+    asset allowlist used unchanged.
+  check-round2.mjs: 93 checks passed; details in people-checks.json.
+    Desktop, 390px, 320px and 200% layout equivalent; exact range/counts,
+    keyboard disclosures, focus/open-state retention through disconnect and
+    recovery redraws, reflow, accessible text, CSP and larger groups.
+  capture.mjs: all nine states, desktop and phone, zero overflow or unexpected
+    errors. Existing fixture values/prose are unchanged and source-guarded.
+
+Artifacts
+  /root/reviews/ui-shots/round2/
+    18 final state screenshots + manifest.json + contact sheets
+    checks.json + people-checks.json
+    round-1/ and round-2/ critique captures
+    synthetic-150-people-*.png: labeled layout tests, not an analysis or report
+
+Deferred exactly as requested
+  /root/reviews/ui-fields.md was absent throughout this implementation.
+  No summary/full-report expansion, question-choice buttons or z-score field
+  has been implemented. Read that file before implementing items 3–5.

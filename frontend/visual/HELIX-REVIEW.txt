@@ -1,0 +1,97 @@
+HELIX-ONLY REVIEW
+
+Criterion: does it look like a real molecule, or like a chart?
+Final judgment: it reads as a molecule. The continuous round backbones, enclosed
+volume, softly rounded rungs, depth-dependent scale and light, and correct
+occlusion establish a physical object. The model turns around its fixed long
+axis; there is no translating layer or scrolling waveform.
+
+Scope
+Only the decorative helix, its mounting/cleanup, and its review tooling changed.
+Page wording, values, report rendering, questions, question/finish announcements,
+notification settings, typography and palette remain as accepted. The phone helix
+moves above the headline as requested. The running card and the downstream page
+retain their previous dimensions (desktop 1440x1126; phone 390x1751).
+
+Round 0 — first projected molecule
+Captures: /root/reviews/ui-shots/helix/round-0
+Replaced the scrolling SVG waves/dots with projected 3D tube faces and rungs.
+This immediately read as a molecule, but face seams and longitudinal stripes made
+the surface resemble braided rope. The rung joints looked clipped and the tube
+ends looked square-cut. The desktop size and above-headline phone placement were
+calm and legible.
+
+Round 1 — smooth material and genuine depth buffering
+Captures: /root/reviews/ui-shots/helix/round-1
+Moved the principal renderer to self-hosted three.js/WebGL. Smooth tube normals
+replace surface seams; rounded caps finish the backbones and capsule-shaped rungs
+meet them cleanly. A perspective camera makes nearer surfaces thicker. Fixed
+lighting and forest-colored depth fog make the far surfaces dimmer. The depth
+buffer resolves crossings per pixel. Three muted rung tones stay within the
+existing palette. Independent review agreed this reads as a molecule. The phone
+copy needed a little more breathing room above the time divider.
+
+Round 2 — quiet finish and long-session behavior
+Final captures: /root/reviews/ui-shots/helix/running-{desktop,phone}.png
+Refined near/far separation without adding glossy highlights. Reduced the phone
+illustration block by 12px and transferred that room below the copy, preserving
+card height and the positions of timing and controls. Batched repeated rungs and
+end caps into instances, reducing draw calls from 30 to seven. The renderer uses
+no shadows, post-processing, textures, external requests or retained drawing-
+buffer copies. Final visual review found no chart cues, clipping or competition
+with the headline. No further visual changes were needed.
+
+Rendering and lifecycle
+- three.js 0.180.0 is pinned, licensed and bundled into the existing demo.js.
+- The model rotates around its local x axis every 10 seconds, or 14 seconds while
+  waiting for an answer. Its position, camera and slight diagonal tilt stay fixed.
+- Drawing is capped below 30fps by a 34ms minimum timer scheduled after each draw.
+  Phase follows elapsed time, so slow frames do not slow the rotation period.
+- Hidden tabs cancel the drawing timer. Resuming retains the phase rather than
+  jumping through time spent hidden.
+- Reduced motion paints one still frame and has no animation timer. A resize
+  redraws the same pose to fit the new dimensions.
+- The same canvas survives status polling and question arrival. Terminal runs
+  dispose geometry, materials, instance buffers and the WebGL context.
+- WebGL context loss pauses drawing; restoration resumes it. When WebGL is
+  unavailable, a perspective-projected, depth-sorted 2D tube renderer is available.
+- Render resolution is capped at 1.5x device pixel ratio. The illustration is
+  decorative and hidden from assistive technology; it depicts no run data.
+
+Reproduce
+  npm ci --prefix frontend
+  npm run build --prefix frontend
+  npm test
+  PLAYWRIGHT_BROWSERS_PATH=/tmp/ui-refresh-browsers node frontend/visual/check-helix.mjs
+  UI_REVIEW_CHECKS=/root/reviews/ui-shots/helix/workspace-checks.json PLAYWRIGHT_BROWSERS_PATH=/tmp/ui-refresh-browsers node frontend/visual/check-refresh.mjs
+  PLAYWRIGHT_BROWSERS_PATH=/tmp/ui-refresh-browsers node frontend/visual/capture.mjs --out /root/reviews/ui-shots/helix --states running
+  PLAYWRIGHT_BROWSERS_PATH=/tmp/ui-refresh-browsers node frontend/visual/record-running.mjs --out /root/reviews/ui-shots/helix
+
+Validation
+- npm test: 133 frontend tests passed, including ten geometry/lifecycle tests.
+- Existing Python demo suite: 89 tests and 41 subtests passed.
+- Full workspace browser checks: 245 passed across all 18 views and both
+  notification-permission scenarios. Zero axe violations; all 14,790 audited
+  text glyphs use the existing self-hosted fonts.
+- Native-timer helix browser checks: 36 passed across desktop and DPR2 phone.
+  Rotation rate, <=30fps cap, fixed canvas, live reduced motion, hidden-tab pause,
+  polling continuity, terminal disposal and the existing CSP all pass.
+- The browser uses ANGLE/SwiftShader software WebGL in this container. Its short
+  samples ran about 23–24fps with about 0.064–0.067s JavaScript per 2.12s and zero
+  layout work. Total task time was about 1.72–1.73s in this software-rendered
+  environment. These measurements are not a claim about hardware GPU CPU use or battery life.
+
+Both running videos are exactly 14 seconds long and start after the self-hosted
+fonts load. Their manifests confirm WebGL, a 10000ms rotation period, moving
+frames, no external requests and no browser errors. Observed drawing during
+capture stayed below 30fps (desktop 20.73; phone 27.85 in this software-rendered
+environment). First-frame posters were reviewed after encoding.
+
+Final screenshots preserve a visible reduced-motion WebGL still. Supplemental
+waiting-answer screenshots are under helix/validation; the question and answer
+form remain unchanged, with no overlap from the illustration.
+
+Validation evidence and recordings are in /root/reviews/ui-shots/helix.
+Fixtures are the existing synthetic interface fixtures; no analysis was run.
+No agent/harness/scoring/report-generation/deployment code changed. No push or
+deploy. All work is on ui-refresh.

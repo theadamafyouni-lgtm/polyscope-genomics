@@ -1,0 +1,9 @@
+/* Font bytes are installed by fonts.js from this origin's public JS bundle. */
+:root {
+  --sans: 'Manrope';
+  --display: 'Newsreader';
+}
+
+body, button, input, textarea, select { font-family: var(--sans); }
+input::file-selector-button { font-family: var(--sans); }
+h1, h2, .display-type { font-family: var(--display); font-optical-sizing: auto; }

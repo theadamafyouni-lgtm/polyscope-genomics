@@ -1,0 +1,61 @@
+UI REFRESH — SCREENSHOT CRITIQUE ROUNDS
+
+Initial implementation: ui-shots/after/round-0 (all nine states, both sizes).
+The initial full browser audit passes 244 assertions under the production CSP,
+including actual custom font glyphs in all 18 views. These checks do not replace
+visual judgment.
+
+Round 1 — hierarchy and breathing room
+Observed in round-0 screenshots:
+- On phone, the rotated helix spills into the divider above the time estimate.
+  The art should feel composed, with the timing information clearly separated.
+- On desktop, the chart extends the result to 1631px. Too much of the first
+  viewport is empty plotting area; the report's explanation and limits arrive
+  too late. Place the answer and actual reference chart alongside each other,
+  then the evidence and limits below in the same reading order.
+- Some supporting text is too small on mobile. Increase caption/status sizes
+  while keeping the principal step and question dominant.
+- The chart axis and its lower/higher labels use different widths; align them.
+Changes and outcome: see round-1 screenshot set and subsequent review below.
+
+Round 1 result
+All 18 recaptures pass overflow/error checks. The result is now 1327px on desktop
+(previously 1631px); the explanation and limits begin within the first viewport.
+The helix no longer intersects its divider on a phone. Supporting text has more
+weight through size rather than extra boxes. The question still leads its screen.
+
+Round 2 — usable edges and consistent finish
+Observed in round-1 desktop/phone contact sheets and full captures:
+- The error screen explains the failure, but its recovery action is below the
+  timeline. Move a clear action and its deletion consequence beside the error.
+- The phone upload screen spends too much space introducing itself. Tighten the
+  lead, time note and file chooser to bring the main action closer.
+- The elapsed bar's estimate window has only one tick. Give the 70–100 minute
+  window a subtle outline; keep explicit wording that elapsed is not completion.
+- The brand line disappears from phone workspaces. Restore it quietly in the
+  footer, where it does not compete with the current step or question.
+- Make step-transition animation use the same stage projection as the page so a
+  real stage_progress event also triggers the small transition.
+- Use a second-level heading for the comparison chart, preserving reading order.
+The final screenshot set in ui-shots/after captures this round's result.
+
+Round 2 result
+Reviewed the final contact sheets and full-size running, question, result, upload,
+and error screens. All nine states have desktop and phone captures, without
+horizontal overflow or browser errors. The phone question, answer field and send
+action fit in the first viewport. Recovery is now next to the error. The final
+result keeps the exact percentile and reference values, with its explanation and
+limits visible earlier. No further visual changes were needed after this review.
+
+Final browser review: 244 assertions passed, no axe WCAG A/AA violations, no
+fallback glyphs among 14,790 audited glyphs, keyboard/details/focus checks passed,
+and no overflow at 320px. Both no-JavaScript instructions are visible as well.
+Fourteen-second desktop and phone recordings confirm the helix moves with fonts
+loaded. Waiting slows it from 26s to 68s per cycle; hidden tabs pause it and
+reduced-motion users get the still illustration.
+
+Scope edge
+The disconnected workspace is redesigned and captured. The separate nginx
+service-outage response remains unchanged. Embedding both fonts in its return
+string would exceed nginx's configuration token limit; changing the serving
+configuration is outside the allowed page-text work. No deployment occurred.

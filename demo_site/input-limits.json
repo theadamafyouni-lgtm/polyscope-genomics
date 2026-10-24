@@ -1,0 +1,57 @@
+{
+  "measured_on": "2026-10-15",
+  "method": "Stream each permitted input and its expanded payload in 65536-byte chunks; count bytes without retaining content. Resolve dev input paths only from each named dev manifest's staging.files.source. No genome hashes are used.",
+  "margin": "consumer files: 25% above observed maxima; whole genomes: above the largest kind people receive, with room for an uncompressed VCF",
+  "max_upload_bytes": 1073741824,
+  "max_expanded_bytes": 8589934592,
+  "inputs": [
+    {
+      "persona": "sample A",
+      "container": "plain",
+      "format": "genotype text",
+      "uploaded_bytes": 15703366,
+      "expanded_bytes": 15703366
+    },
+    {
+      "persona": "sample C",
+      "container": "zip",
+      "format": "genotype text",
+      "uploaded_bytes": 8247233,
+      "expanded_bytes": 24914030
+    },
+    {
+      "persona": "sample B",
+      "container": "zip",
+      "format": "genotype text",
+      "uploaded_bytes": 8264637,
+      "expanded_bytes": 24941681
+    },
+    {
+      "persona": "sample A",
+      "container": "bzip2",
+      "format": "Complete Genomics var file (whole genome)",
+      "uploaded_bytes": 266453962,
+      "expanded_bytes": 1619914995
+    },
+    {
+      "persona": "sample B",
+      "container": "bzip2",
+      "format": "Complete Genomics var file (whole genome)",
+      "uploaded_bytes": 271316435,
+      "expanded_bytes": 1479595681
+    }
+  ],
+  "unmapped_demo_personas": [
+    "demo persona 1",
+    "demo persona 2",
+    "demo persona 3",
+    "demo persona 4"
+  ],
+  "limitation": "The four tracked demo persona files have no input-genome path or participant reference. Their genome sizes cannot be measured without an input mapping. The current limits are verified against all three permitted dev inputs; they must be rechecked when demo input files are identified.",
+  "typical_sizes": {
+    "consumer_whole_genome_vcf": "200-800 MB compressed (e.g. a Veritas or Nebula genome VCF)",
+    "complete_genomics_var_file": "about 270 MB as bzip2, 1.5-1.6 GB expanded",
+    "exome_vcf": "tens of MB compressed",
+    "not_accepted": "alignments (BAM, CRAM, FASTQ): not genomes the agent reads, and 30-100 GB"
+  }
+}

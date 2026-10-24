@@ -1,0 +1,23 @@
+[Unit]
+Description=Restricted prs-agent demo worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/srv/prs-demo
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+ExecStart=/bin/sh -c 'exec /usr/bin/python3 -m demo_site.worker --web-uid "$(id -u prs-demo)"'
+RuntimeDirectory=prs-demo
+RuntimeDirectoryMode=0755
+UMask=0077
+Delegate=yes
+KillMode=control-group
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

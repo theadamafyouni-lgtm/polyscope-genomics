@@ -1,0 +1,10 @@
+{
+  "name": "prs-agent-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node frontend/server.mjs",
+    "test": "node --test frontend/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

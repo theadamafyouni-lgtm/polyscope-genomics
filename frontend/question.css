@@ -1,0 +1,22 @@
+.question-choices{border:0;padding:0;margin:0;min-width:0}
+.question-choices legend{font-size:14px;font-weight:650;margin-bottom:13px;padding:0}
+.question-panel .question-choice{position:relative;display:block;margin-bottom:10px;cursor:pointer}
+.question-choice-input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.question-choice-face{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:57px;padding:14px 17px;border:1px solid var(--muted);border-radius:7px;background:var(--white);font-size:15px;font-weight:500;line-height:1.5;overflow-wrap:anywhere;transition:background-color .18s ease,border-color .18s ease}
+.question-choice-mark{width:18px;height:18px;flex:0 0 18px;border:1px solid var(--muted);border-radius:50%;position:relative}
+.question-choice-input:checked+.question-choice-face{background:var(--soft);border-color:var(--green);color:var(--green)}
+.question-choice-input:checked+.question-choice-face .question-choice-mark{border-color:var(--green);background:var(--green)}
+.question-choice-input:checked+.question-choice-face .question-choice-mark::after{content:'';position:absolute;left:5px;top:3px;width:5px;height:8px;border:solid var(--white);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.question-choice-input:focus-visible+.question-choice-face{outline:3px solid var(--blue);outline-offset:3px}
+.question-choice-input:disabled+.question-choice-face{cursor:wait;opacity:.7}
+.question-choice:hover .question-choice-input:not(:disabled)+.question-choice-face{border-color:var(--green)}
+.question-written-answer{margin-top:21px}
+.question-written-answer:first-child{margin-top:0}
+.question-choices+.question-written-answer textarea{min-height:102px}
+.question-panel #answer-submit{min-height:48px}
+@media(max-width:740px){
+ .question-choices legend{font-size:13px}
+ .question-choice-face{min-height:54px;font-size:14px;padding:13px 15px}
+ .question-choices+.question-written-answer textarea{min-height:98px}
+}
+@media(prefers-reduced-motion:reduce){.question-choice-face{transition:none}}

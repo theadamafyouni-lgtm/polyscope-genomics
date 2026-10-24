@@ -1,0 +1,50 @@
+UI REFRESH — DESIGN CHOICE CHECKPOINT
+
+Branch: ui-refresh. Local commits only; no push or deployment.
+Scope so far: frontend/visual/ only. Product entry points, demo_site, agent,
+harness, scoring and report contracts remain unchanged.
+
+Choose between:
+  A / Clear workbench — a focused green work area, modern type, compact results.
+  B / Field journal — serif type, forest sidebar, editorial reading sequence.
+Recommendation: A makes step, time estimate and attention state easiest to scan
+together during a long run. B has a quieter, more literary character.
+
+Screenshots
+  /root/reviews/ui-shots/before/
+    18 full-page captures: nine existing states at desktop 1440x1000 and phone
+    390x844. Includes sign-in, upload, busy, running, waiting-answer, offline,
+    finished-score, finished-refusal, error. Contact sheets + manifest included.
+  /root/reviews/ui-shots/directions/
+    a/ and b/: 16 total full-page captures for running, waiting-answer,
+    finished-score and finished-refusal, on desktop and phone.
+    comparison.png: first-viewport desktop comparison.
+    index.html: comparison gallery linking every full screenshot.
+    checks.json: browser accessibility and interaction results.
+
+Only existing synthetic test fixture results appear in these local previews.
+They are explicitly identified in the review footer, manifests and fixture docs.
+No genome was read, uploaded or analyzed; no real run or service was contacted.
+The displayed score bundle is checked verbatim against contracts.test.js.
+
+Validation at this checkpoint
+  npm test: 93 passing.
+  node --test frontend/visual/presentation.test.mjs: 5 passing.
+  python3 -m pytest -q tests/test_demo_web.py tests/test_demo_flow.py
+    tests/test_demo_worker.py demo_site/test_worker_progress.py:
+    34 tests + 10 subtests passing.
+  Browser screenshots: zero horizontal overflow and unexpected console errors.
+  Automated WCAG A/AA (including 2.1 AA): 16 scans, zero violations.
+  Additional 320px layouts: zero horizontal overflow.
+  Keyboard details toggles, waiting tab title, opt-in sound/notifications with
+    mocked granted/denied browser permission, alert deduplication and draft
+    preservation: passing. OS notification delivery is not a live-system test.
+  Decorative checkmark contrast entries remain recorded as axe incompletes;
+    they are aria-hidden and accompanied by text. CSS contrast is above AA.
+  git diff --check: passing.
+
+Next, after the user chooses
+  Apply the selected direction to every production UI state within the requested
+  scope, wire and test the real polling/answer/alert behavior, critique screenshots
+  and complete at least two improvement rounds, capture ui-shots/after, run the
+  required tests and commit changes locally. Stop here until that choice arrives.

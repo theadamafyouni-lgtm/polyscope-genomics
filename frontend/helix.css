@@ -1,0 +1,21 @@
+/* Perspective and axial rotation are rendered inside the stationary canvas. */
+.dna-helix {
+  position: relative;
+  width: min(100%, 440px);
+  height: 220px;
+  pointer-events: none;
+  contain: layout style;
+}
+.dna-molecule { display: block; width: 100%; height: 100%; }
+.analysis-hero .hero-art .dna-helix { width: 100%; transform: none; }
+@media (max-width: 740px) {
+  .analysis-hero .hero-art { order: -1; }
+  .analysis-hero.is-waiting .hero-art { grid-row: 1; }
+  .analysis-hero .hero-art .dna-helix { height: 140px; }
+  .analysis-hero.is-waiting .hero-art .dna-helix { height: 100px; transform: none; }
+  /* Transfer 12px from the illustration to the space below the copy, keeping
+     the card, timing, controls and surrounding page at their existing height. */
+  .analysis-hero:not(.is-waiting) .hero-art { height: 134px; }
+  .analysis-hero:not(.is-waiting) .hero-art .dna-helix { height: 128px; }
+  .analysis-hero:not(.is-waiting) .time-track { margin-top: 17px; }
+}

@@ -1,0 +1,34 @@
+:root { --paper:#f7f7f0; --white:#fff; --ink:#173f35; --text:#293e35; --muted:#52655b; --line:#d6dfd3; --green:#234f3f; --soft:#edf2e3; --lime:#d9ed92; --blue:#486d92; --sand:#f7f3e9; --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--text); font:16px/1.6 var(--sans); }
+h1,h2,h3,p { margin:0; }
+h1,h2,h3 { color:var(--ink); }
+button,input,textarea { font:inherit; }
+button,a { touch-action:manipulation; }
+button { cursor:pointer; }
+a { color:inherit; }
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible { outline:3px solid var(--blue); outline-offset:5px; }
+button { color:inherit; }
+button:disabled { cursor:default; }
+.eyebrow,.result-kicker { font-size:11px; font-weight:700; line-height:1.5; letter-spacing:.13em; text-transform:uppercase; }
+.ui-button { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:12px; border:1px solid var(--ink); padding:11px 20px; border-radius:7px; background:var(--ink); color:var(--white); font-weight:600; font-size:14px; }
+.ui-button.secondary { background:transparent; color:var(--ink); border-color:var(--line); }
+.ui-button:hover { background:var(--green); color:white; }
+.ui-button.secondary:hover { background:var(--soft); color:var(--ink); border-color:var(--ink); }
+summary { cursor:pointer; min-height:44px; display:list-item; align-content:center; }
+details[open] > summary { margin-bottom:14px; }
+.technical-details li { overflow-wrap:anywhere; }
+.result-value,.result-facts dd { overflow-wrap:anywhere; }
+textarea { display:block; width:100%; min-height:120px; padding:12px; border:1px solid var(--muted); background:white; color:var(--text); border-radius:6px; resize:vertical; }
+.question-card label { display:block; margin-bottom:8px; font-weight:600; }
+.question-card form { margin-top:24px; }
+.question-card .ui-button { margin-top:16px; }
+.question-card .answer-help { display:inline-block; margin-left:12px; font-size:13px; }
+.sr-only { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.skip-link { position:fixed; top:-100px; left:16px; background:var(--lime); color:var(--ink); padding:12px 20px; z-index:100; }
+.skip-link:focus { top:12px; }
+.review-bar { position:relative; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 20px; padding:12px 28px; border-top:1px solid var(--line); background:var(--soft); color:var(--muted); font-size:12px; }
+.review-bar nav { display:flex; flex-wrap:wrap; gap:14px; }
+.review-bar a { padding:8px 0; }
+.review-status { width:100%; }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
